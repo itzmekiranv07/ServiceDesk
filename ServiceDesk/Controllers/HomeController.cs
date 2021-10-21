@@ -17,8 +17,6 @@ namespace ServiceDesk.Controllers
         [HttpPost]
         public ActionResult Index(int username, string password)
         {
-            
-
             string user_role = "sdfasd";
             if (user_role == "user") return RedirectToAction("Users", "Role");
             else if (user_role == "lead") return RedirectToAction("Lead", "Role");
