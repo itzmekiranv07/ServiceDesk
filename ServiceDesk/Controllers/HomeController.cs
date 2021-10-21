@@ -32,12 +32,9 @@ namespace ServiceDesk.Controllers
             {
                 Session["empid"] = username;
                 Session["role"] = a.getRole(username);
-
-                
             }
 
-
-            string user_role = "sdfasd";
+            string user_role = Session["role"].ToString();
             if (user_role == "user") return RedirectToAction("Users", "Role");
             else if (user_role == "lead") return RedirectToAction("Lead", "Role");
             else if (user_role == "manager") return RedirectToAction("Manager", "Role");
