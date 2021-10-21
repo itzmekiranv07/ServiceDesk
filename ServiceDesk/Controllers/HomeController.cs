@@ -15,28 +15,15 @@ namespace ServiceDesk.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index (string empid, string pass_word)
+        public ActionResult Index(int username, string password)
         {
             
+
             string user_role = "sdfasd";
-            if(user_role == "user") return RedirectToAction("Users","Role");
-            else if(user_role == "lead") return RedirectToAction("Lead", "Role");
-            else if (user_role == "manager") return RedirectToAction("Manager","Role");
+            if (user_role == "user") return RedirectToAction("Users", "Role");
+            else if (user_role == "lead") return RedirectToAction("Lead", "Role");
+            else if (user_role == "manager") return RedirectToAction("Manager", "Role");
             return RedirectToAction("Admin", "Role");
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
         }
     }
 }
