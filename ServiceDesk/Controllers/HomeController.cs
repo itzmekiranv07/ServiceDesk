@@ -8,9 +8,21 @@ namespace ServiceDesk.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index (string empid, string pass_word)
+        {
+            
+            string user_role = "sdfasd";
+            if(user_role == "user") return RedirectToAction("Users","Role");
+            else if(user_role == "lead") return RedirectToAction("Lead", "Role");
+            else if (user_role == "manager") return RedirectToAction("Manager","Role");
+            return RedirectToAction("Admin", "Role");
         }
 
         public ActionResult About()
