@@ -8,23 +8,22 @@ namespace ServiceDesk.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        [HttpPost]
+        public ActionResult Index(int username, string password)
         {
-            ViewBag.Message = "Your application description page.";
+            
 
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            string user_role = "sdfasd";
+            if (user_role == "user") return RedirectToAction("Users", "Role");
+            else if (user_role == "lead") return RedirectToAction("Lead", "Role");
+            else if (user_role == "manager") return RedirectToAction("Manager", "Role");
+            return RedirectToAction("Admin", "Role");
         }
     }
 }
