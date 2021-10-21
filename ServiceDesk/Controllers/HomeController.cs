@@ -6,14 +6,20 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+
 using Newtonsoft.Json;
+
 using ServiceDesk.Models;
 
 namespace ServiceDesk.Controllers
 {
     public class HomeController : Controller
     {
+
         emp1 E = new emp1();
+        [AllowAnonymous]
+        [HttpGet]
+
         public ActionResult Index()
         {
            
@@ -21,6 +27,7 @@ namespace ServiceDesk.Controllers
         }
 
         [HttpPost]
+
         public ActionResult Index (int empid, string pass_word)
         {
             emp1 E = new emp1();
@@ -69,18 +76,6 @@ namespace ServiceDesk.Controllers
             
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+       
     }
 }
