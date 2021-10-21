@@ -179,21 +179,7 @@
             
         }
     </style>
-    <script>
-        function validateForm() {
-            var x = document.forms["myForm"]["username"].value;
-            if (x == "" || x == null) {
-                alert("Username must be filled out");
-                return false;
-            }
-            var y = document.forms["myForm"]["password"].value;
-            if (y == "" || y == null) {
-                alert("Password must be filled out");
-                return false;
-            }
 
-        }
-    </script>
    </head>
 
 <body>
@@ -214,8 +200,8 @@
         <div class="a3">
             <p class="sign" align="center">Sign in</p>
             <form name="myForm" onsubmit="return validateForm()" method="post" required>
-                <input class="un " type="text" align="center" placeholder="Username" name="username">
-                <input class="pass" type="password" align="center" placeholder="Password" name="password">
+               <input class="un " type="text" align="center" placeholder="Username"  name="username" required>
+                <input class="pass" type="password" align="center" placeholder="Password" name="password" required>
                 <input class="submit" type="submit" align="center" value="Sign in">
                 <p class="forgot" align="left"><a href="" />Forgot Password?</p>
             </form>
