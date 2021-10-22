@@ -61,6 +61,8 @@ namespace ServiceDesk.Controllers
 
             if (E.Empid==empid && E.Password==pass_word)
             {
+                Session["role"] = "User";
+
                 if (E.Role_assigned == "Users") return RedirectToAction("Users", "Role");
                     else if (E.Role_assigned== "Lead") return RedirectToAction("Lead", "Role");
                  else if (E.Role_assigned == "Manager") return RedirectToAction("Manager", "Role");
