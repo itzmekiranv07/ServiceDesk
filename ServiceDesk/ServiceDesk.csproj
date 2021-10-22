@@ -129,21 +129,31 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Design2.html" />
+    <Content Include="Form.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="HomePage.html" />
+    <Content Include="Images\r10.png" />
+    <Content Include="Images\R11.jpg" />
+    <Content Include="Images\R12.jpg" />
+    <Content Include="Images\R13.jpg" />
+    <Content Include="Images\R14.jpg" />
+    <Content Include="Images\r2.jpg" />
     <Content Include="Images\r3.jpg" />
     <Content Include="Images\r5.jpg" />
     <Content Include="Images\r6.jpg" />
     <Content Include="Images\r7.jpg" />
     <Content Include="Images\werr.jpg" />
+    <Content Include="Lead.html" />
+    <Content Include="Manager.html" />
+    <Content Include="User.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
