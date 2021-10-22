@@ -9,15 +9,13 @@
             background-attachment: fixed;
             background-size: 100% 100%;
         }
-
         h1 {
             font-family: 'Book Antiqua';
             color: white;
             position: absolute;
             top: 0%;
             left: 40%;
-            text-align:center;
-            
+            text-align:center;         
         }
 
         .a1 {
@@ -103,12 +101,9 @@
             margin-bottom: 27px;
             font-family: 'Ubuntu', sans-serif;
         }
-
-
             .un:focus, .pass:focus {
                 border: 2px solid rgba(0, 0, 0, 0.18) !important;
             }
-
         .submit {
             cursor: pointer;
             border-radius: 5em;
@@ -124,20 +119,16 @@
             font-size: 13px;
             box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
         }
-
         .forgot {
             /*text-shadow: 0px 1px 3px rgba(117, 117, 117, 0.12);*/
             color: #E1BEE7;
             padding-top: 15px;
         }
-
         a {
             text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
             color: black;
             text-decoration: none
         }
-
-
         .a3 {
             position: absolute;
             left: 50%;
@@ -145,7 +136,6 @@
             top: 20%;
             bottom: 30%;
         }
-
         .a4 {
             position: absolute;
             left: 40%;
@@ -153,7 +143,6 @@
             top: 0%;
             bottom: 85%;
         }
-
         .a5 {
             position: absolute;
             left: 80%;
@@ -161,7 +150,6 @@
             top: 90%;
             bottom: 15%;
         }
-
         h6 {
             position: absolute;
             left: 80%;
@@ -172,28 +160,15 @@
         .a7 {
             color:white;
             position: absolute;
+            font-family: Calibri;
+            font-size:large;
             left: 12%;
             right: 1%;
             top: 80%;
-            bottom: 10%;
-            
+            bottom: 10%;         
         }
     </style>
-    <script>
-        function validateForm() {
-            var x = document.forms["myForm"]["username"].value;
-            if (x == "" || x == null) {
-                alert("Username must be filled out");
-                return false;
-            }
-            var y = document.forms["myForm"]["password"].value;
-            if (y == "" || y == null) {
-                alert("Password must be filled out");
-                return false;
-            }
 
-        }
-    </script>
    </head>
 
 <body>
@@ -202,10 +177,7 @@
         <div class="a2">
             <h5>“Life is for service.”</h5>
         </div>
-        <div class="a7">
-            <!--<h4>People First</h4>
-            <h4>Execution Excellence</h4>
-            <h4>Technology Leadership </h4>-->
+        <div class="a7">  
             <h4>Great Place To Work</h4>
             
             
@@ -213,9 +185,10 @@
 
         <div class="a3">
             <p class="sign" align="center">Sign in</p>
-            <form name="myForm" onsubmit="return validateForm()" method="post" required>
-                <input class="un " type="text" align="center" placeholder="Username" name="username">
-                <input class="pass" type="password" align="center" placeholder="Password" name="password">
+
+            <form name="myForm" required>
+                <input class="un " type="text" align="center" placeholder="Username" name="username" required>
+                <input class="pass" type="password" align="center" placeholder="Password" name="password" required>
                 <input class="submit" type="submit" align="center" value="Sign in">
                 <p class="forgot" align="left"><a href="" />Forgot Password?</p>
             </form>
