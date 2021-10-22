@@ -1,4 +1,5 @@
-﻿@{
+﻿@*@model ServiceDesk.Models.emp1*@
+@{
     ViewBag.Title = "Home Page";
 }
 <!DOCTYPE html>
@@ -194,9 +195,11 @@
 
         <div class="a3">
             <p class="sign" align="center">Sign in</p>
-            <form name="myForm" method="post" required>
-                <input class="un " type="number" align="center" placeholder="Username" name="username" id="username" required>
-                <input class="pass" type="password" align="center" placeholder="Password" name="password" id="password" required>
+
+            <form name="myForm" onsubmit="return validateForm()" method="post" required>
+                <input class="un " type="number" align="center" placeholder="Username" name="empid" id="empid">
+                <input class="pass" type="password" align="center" placeholder="Password" name="pass_word" id="pass_word">
+
                 <input class="submit" type="submit" align="center" value="Sign in">
                 <p class="forgot" align="left"><a href="" />Forgot Password?</p>
             </form>

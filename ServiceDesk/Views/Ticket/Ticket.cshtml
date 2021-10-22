@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Ticket";
+}
+
+<h2>Ticket</h2>
+
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
+    <script>
+    var ticketid = @ViewBag.Ticketid;
+
+    $(document).ready(function ()
+    {
+        if (ticketid == -1) {
+        $("p").hide();
+    }
+    });
+    </script>
+</head>
+
+<body>
+    <input type="text" id="titleInput" />
+    <p id="titleDisplay">Ticket's Title @ViewBag.Ticketid</p>
+
+
+</body>
+
