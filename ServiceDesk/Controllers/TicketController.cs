@@ -27,7 +27,7 @@ namespace ServiceDesk.Controllers
         {
             WebAPIDBO dbo = new WebAPIDBO();
             Employee e = (Employee)Session["Employee"];
-            ViewData["CreatedTickets"]  = dbo.getCreatedTickets(e.Empid); 
+            ViewData["CreatedTickets"]  = dbo.getCreatedTickets(e.Emp_ID); 
             return View();
         }
 

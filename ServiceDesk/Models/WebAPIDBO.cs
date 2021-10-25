@@ -20,39 +20,39 @@ namespace ServiceDesk.Models
 
         //Get
 
-        internal Ticket getTicket(int ticketid)
+        internal Ticket_Info getTicket(int ticketid)
         {
             throw new NotImplementedException();
         }
 
-        internal Profile getProfile(int empid)
+        internal Employee getProfile(int empid)
         {
             throw new NotImplementedException();
         }
 
-        internal List<Ticket> getCreatedTickets(int username)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        internal List<Ticket> getTicketsGroup(int groupid)
+        internal List<Ticket_Info> getCreatedTickets(int username)
         {
             throw new NotImplementedException();
         }
 
 
-        internal List<Ticket> getTicketsDept(int deptid)
+        internal List<Ticket_Info> getTicketsGroup(int groupid)
         {
             throw new NotImplementedException();
         }
 
-        internal List<Ticket> getAssignedTickets(int username)
+
+        internal List<Ticket_Info> getTicketsDept(int deptid)
         {
             throw new NotImplementedException();
         }
 
-        internal List<Profile> getGroupMembers(int groupid)
+        internal List<Ticket_Info> getAssignedTickets(int username)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal List<Employee> getGroupMembers(int groupid)
         {
             throw new NotImplementedException();
         }
@@ -62,14 +62,14 @@ namespace ServiceDesk.Models
             throw new NotImplementedException();
         }
 
-        internal List<Profile> getProfiles(string role)
+        internal List<Employee> getProfiles(string role)
         {
             throw new NotImplementedException();
         }
 
 
         //Put
-        internal string newTicket(Ticket ticket)
+        internal string newTicket(Ticket_Info ticket)
         {
             throw new NotImplementedException();
         }
