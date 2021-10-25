@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "getAssignedTickets";
+}
+
+<h2>getAssignedTickets</h2>
+
+
+
+
+
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            var tickets = @Html.Raw(ViewData["AssignedTickets"]);
+
+            $.each(tickets, function (index, element) {
+                $('#content').append(
+                    $('<li>').append($('<a>').attr('href', '/Ticket/getTicket/' + element.Ticket_ID).append(
+                        "Id: " + element.Ticket_ID + ", " + element.Title + ", Status: " + element.Status_Info)));
+            });
+
+            
+
+        });
+    </script>
+</head>
+
+<body>
+    <div>
+        <ul id="content">
+            
+        </ul>
+    </div>
+</body>
+
+
