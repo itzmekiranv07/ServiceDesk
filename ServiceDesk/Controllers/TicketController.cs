@@ -10,7 +10,7 @@ namespace ServiceDesk.Controllers
     public class TicketController : Controller
     {
         // GET: Ticket
-        public ActionResult getTicket(int ticketid = -1)
+        public ActionResult getTicket(int ticketid)
         {
             ViewBag.Ticketid = ticketid;
             WebAPIDBO dbo = new WebAPIDBO();
@@ -31,17 +31,23 @@ namespace ServiceDesk.Controllers
             return View();
         }
 
-        public ActionResult getAssignedTickets(int emp_id)
+        public ActionResult getAssignedTickets()
         {
+            Employee e = (Employee)Session["Employee"];
             WebAPIDBO dbo = new WebAPIDBO();
-            ViewData["AssignedTickets"] = dbo.getAssignedTickets(emp_id);
+            ViewData["AssignedTickets"] = dbo.getAssignedTickets(e.Emp_ID);
             return View();
         }
 
-        public ActionResult getProfile(int emp_id)
+        public ActionResult getAssignedTickets(int Emp_ID)
         {
             return View();
         }
+
+        //public ActionResult getProfile(int emp_id)
+        //{
+        //    return View();
+        //}
 
     }
 }
