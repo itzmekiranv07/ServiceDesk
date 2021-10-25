@@ -76,7 +76,7 @@ namespace ServiceDesk.Models
 
         internal string newEmployee()
         {
-
+            throw new NotImplementedException();
         }
     }
 }

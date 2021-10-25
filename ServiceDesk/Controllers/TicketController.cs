@@ -40,7 +40,7 @@ namespace ServiceDesk.Controllers
 
         public ActionResult getProfile(int emp_id)
         {
-
+            return View();
         }
 
     }
