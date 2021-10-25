@@ -29,6 +29,22 @@ namespace ServiceDesk.Models
         public Nullable<int> Assigned_To { get; set; }
         public Nullable<int> Progress { get; set; }
         public string Messagess { get; set; }
+
+        public Ticket_Info(int ticket_ID, int emp_ID, int? dept_ID, int? group_ID, string title, string status_Info,
+            string priority_Info, int? assigned_To, int? progress, string messagess)
+        {
+            Ticket_ID = ticket_ID;
+            Emp_ID = emp_ID;
+            Dept_ID = dept_ID;
+            Group_ID = group_ID;
+            Title = title;
+            Status_Info = status_Info;
+            Priority_Info = priority_Info;
+            Assigned_To = assigned_To;
+            Progress = progress;
+            Messagess = messagess;
+        }
+
     }
 
     public class Group

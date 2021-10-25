@@ -22,7 +22,9 @@ namespace ServiceDesk.Models
 
         internal Ticket_Info getTicket(int ticketid)
         {
-            throw new NotImplementedException();
+            Ticket_Info t1 = new Ticket_Info(1, 2, 3, 2, "keyboard not working", "Not Assigned", "Medium", null, null, "A at 18:00 -> help pls");
+            return t1;
+            //throw new NotImplementedException();
         }
 
         internal Employee getProfile(int empid)
@@ -49,7 +51,11 @@ namespace ServiceDesk.Models
 
         internal List<Ticket_Info> getAssignedTickets(int username)
         {
-            throw new NotImplementedException();
+            Ticket_Info t1 = new Ticket_Info(1, 2, 3, 2, "keyboard not working", "Not Assigned", "Medium",null,null,"A at 18:00 -> help pls");
+            Ticket_Info t2 = new Ticket_Info(2, 3, 3, 2, "keyboard not working", "Not Assigned", "Medium", null, null, "");
+            List<Ticket_Info> t = new List<Ticket_Info>{ t1, t2 };
+            return t;
+            //throw new NotImplementedException();
         }
 
         internal List<Employee> getGroupMembers(int groupid)

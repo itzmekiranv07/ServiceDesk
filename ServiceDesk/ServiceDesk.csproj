@@ -225,6 +225,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Ticket\Ticket.cshtml" />
     <Content Include="Views\Ticket\getTicket.cshtml" />
+    <Content Include="Views\Ticket\getAssignedTickets.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
