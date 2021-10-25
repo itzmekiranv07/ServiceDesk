@@ -184,6 +184,7 @@
     <Content Include="Images\R12.jpg" />
     <Content Include="Images\R13.jpg" />
     <Content Include="Images\R14.jpg" />
+    <Content Include="Images\r16a.jpg" />
     <Content Include="Images\r2.jpg" />
     <Content Include="Images\r3.jpg" />
     <Content Include="Images\r5.jpg" />
@@ -192,6 +193,8 @@
     <Content Include="Images\werr.jpg" />
     <Content Include="Lead.html" />
     <Content Include="Manager.html" />
+    <Content Include="newTicket.html" />
+    <Content Include="Profile.html" />
     <Content Include="User.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -221,6 +224,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Ticket\Ticket.cshtml" />
+    <Content Include="Views\Ticket\getTicket.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
