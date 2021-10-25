@@ -16,7 +16,7 @@ namespace ServiceDesk.Controllers
     public class HomeController : Controller
     {
 
-        emp1 E = new emp1();
+        Employee E = new Employee();
         [AllowAnonymous]
         [HttpGet]
 
@@ -30,7 +30,8 @@ namespace ServiceDesk.Controllers
 
         public ActionResult Index (int empid, string pass_word)
         {
-            emp1 E = new emp1();
+            /*
+            Employee E = new Employee();
             using (var client = new HttpClient())
             {
 
@@ -47,7 +48,7 @@ namespace ServiceDesk.Controllers
 
                     var EmpResponse = result.Content.ReadAsStringAsync().Result;
                     //EmpResponse.Wait();
-                    E = JsonConvert.DeserializeObject<emp1>(EmpResponse);
+                    E = JsonConvert.DeserializeObject<Employee>(EmpResponse);
                     // = EmpResponse.Result;
                 }
                 else
@@ -61,6 +62,7 @@ namespace ServiceDesk.Controllers
 
             if (E.Empid==empid && E.Password==pass_word)
             {
+                Session["Employee"] = E;
                 Session["role"] = "User";
 
                 if (E.Role_assigned == "Users") return RedirectToAction("Users", "Role");
@@ -74,7 +76,9 @@ namespace ServiceDesk.Controllers
                 return View();
             }
                 
-            
+            */
+
+            return View();
             
         }
 

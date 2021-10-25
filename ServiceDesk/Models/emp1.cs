@@ -5,11 +5,32 @@ using System.Web;
 
 namespace ServiceDesk.Models
 {
-    public class emp1
+    public class Employee
     {
         public int Empid{ get; set; }
-     public string Password{ get; set; }
+        public string Password{ get; set; }
         public string Role_assigned{ get; set; }
-        public string des { get; set; }
+        public string des { get; set; } 
+    }
+
+    public class Ticket
+    {
+        public int ticketId { get; set; }
+        public int title { get; set; }
+    }
+
+    public class Group
+    {
+
+    }
+
+    public class Dept
+    {
+
+    }
+
+    public class Profile
+    {
+
     }
 }
