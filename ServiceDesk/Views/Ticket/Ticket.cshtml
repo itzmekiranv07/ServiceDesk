@@ -14,17 +14,20 @@
 
     $(document).ready(function ()
     {
+        var role = @Session["role"].ToString();
+
         if (ticketid == -1) {
         $("p").hide();
     }
     });
+
     </script>
 </head>
 
 <body>
-    <input type="text" id="titleInput" />
-    <p id="titleDisplay">Ticket's Title @ViewBag.Ticketid</p>
-
+    
+    <input type= "text" id="title" value="Please enter a breif description of your issue"/>
+    
 
 </body>
 
