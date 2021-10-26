@@ -76,7 +76,10 @@ namespace ServiceDesk.Models
 
         internal List<Group> getGroups(int deptid)
         {
-            throw new NotImplementedException();
+            Group g1 = new Group(1, "Hardware", 1, 1);
+            Group g2 = new Group(2, "Software", 1, 2);
+            return new List<Group> { g1, g2 };
+            //throw new NotImplementedException();
         }
 
         internal List<Dept> getDepts()

@@ -50,11 +50,13 @@ namespace ServiceDesk.Controllers
             return View();
         }
 
+        [Route("Role/getGroupsinDept")]
         [Route("Role/getGroupsinDept/{Dept_ID}")]
-        public ActionResult getGroupsinDept(int Dept_ID)// landing for manager
+        public ActionResult getGroupsinDept(int? Dept_ID)// landing for manager
         {
+            if (Dept_ID == null) Dept_ID = 0;//Dept_ID = dept of logged in manager
             WebAPIDBO dbo = new WebAPIDBO();
-            ViewData["GroupsinDept"] = JsonConvert.SerializeObject(dbo.getGroups(Dept_ID));
+            ViewData["GroupsinDept"] = JsonConvert.SerializeObject(dbo.getGroups((int)Dept_ID));
             return View();
         }
         
