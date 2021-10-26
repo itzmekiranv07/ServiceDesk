@@ -1,29 +1,20 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "getEmployee";
     Layout = "~/Views/Shared/_MasterPage.cshtml";
 }
-
 <h2>getEmployee</h2>
 
 <link href="~/ProfileSheet.css" rel="stylesheet" />
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-
-
     $(document).ready(function () {
-
         var profile = @Html.Raw(ViewData["Profile"]);
         var keys = Object.keys(profile);
-
         $.each(keys, function (index, element) {
             $("#" + element).val(profile[element]);
         });
-
     });
-
 </script>
 
 
@@ -35,15 +26,21 @@
             </div>
             <div class="a">
                 <form name="myForm" method="post">
-
                     <h1>Profile</h1>
-                    <input class="un" type="text" align="center"  name="Name" id="Emp_Name" />
-                    <input class="un" type="text" align="center"  name="title" id="Emp_ID" />
-                    <input class="un" type="text" align="center"  name="title" id="Emp_Email" />
-                    <input class="un" type="text" align="center"  name="title" id="Mobile_Num" />
-                    <input class="un" type="text" align="center"  name="title" id="Emp_Role" />
-                    <input class="un" type="text" align="center"  name="title" id="Dept_ID" />
-                    <input class="un" type="text" align="center"  name="title" id="Group_ID" />
+                    <lable>Name</lable>
+                    <input class="un" type="text" align="center" name="Name" id="Emp_Name"/>
+                    <lable>Emp ID</lable>
+                    <input class="un" type="text" align="center" name="title" id="Emp_ID"/>
+                    <lable>Email</lable>
+                    <input class="un" type="text" align="center" name="title" id="Emp_Email"/>
+                    <lable>Mobile</lable>
+                    <input class="un" type="text" align="center" name="title" id="Mobile_Num"/>
+                    <lable>Emp Role</lable>
+                    <input class="un" type="text" align="center" name="title" id="Emp_Role"/>
+                    <lable>Dept ID</lable>
+                    <input class="un" type="text" align="center" name="title" id="Dept_ID"/>
+                    <lable>Group ID</lable>
+                    <input class="un" type="text" align="center" name="title" id="Group_ID"/>
                     <input class="submit" type="submit" value="Update">
                 </form>
             </div>
