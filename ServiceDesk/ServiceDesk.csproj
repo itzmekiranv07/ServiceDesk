@@ -195,6 +195,7 @@
     <Content Include="Lead.html" />
     <Content Include="LoginSheet.css" />
     <Content Include="Manager.html" />
+    <Content Include="MasterSheet.css" />
     <Content Include="newTicket.html" />
     <Content Include="Profile.html" />
     <Content Include="ProfileSheet.css" />
