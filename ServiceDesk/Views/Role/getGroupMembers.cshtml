@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Group Members";
+}
+
+<h2> GroupMembers </h2>
+
+
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            var members = @Html.Raw(ViewData["GroupMembers"]);
+
+            $.each(members, function (index, element) {
+                $('#content').append(
+                    
+                        '<div class="card" style="width: 18rem;"><div class="card-body"><h5 class="card-title">'
+                        + element.Emp_ID + '</h5><h6 class="card-subtitle mb-2 text-muted">'
+                    + element.Emp_Name + '</h6><p class="card-text">' + element.Emp_Email + '</p><a href="/Ticket/getAssignedTickets/' + element.Emp_ID + '" ' + 'class="btn btn-primary">View Assigned Tickets</a></div></div>'
+
+                );
+            });
+        });
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+        <div id="content">
+            
+        </div>
+
+</body>
+
+
