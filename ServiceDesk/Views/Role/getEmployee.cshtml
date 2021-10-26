@@ -8,22 +8,40 @@
 
 @ViewData["Profile"]
 
-@*<script>
-        $(document).ready(function () {
-            var profile = @Html.Raw(ViewData["Profile"]);
-</script>*@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+
+    $(document).ready(function () {
+
+        var profile = @Html.Raw(ViewData["Profile"]);
+        var keys = Object.keys(profile);
+
+        $.each(keys, function (index, element) {
+            $("#" + element).val(profile[element]);
+        });
+
+    });
+
+</script>
+
+
 <body>
     <form name="myForm" method="post">
+
         <h1>Profile</h1>
-        <input type="text" name="EMP_NAME" value="<%: ViewData["ee"].ToString()%>">
-        <input class="un" type="text" align="center" placeholder="Name"  name="Name" id="Name" readonly />
-        <input class="un" type="text" align="center" placeholder="Emp ID" name="title" id="t2" />
-        <input class="un" type="text" align="center" placeholder="E-mail" name="title" id="t3" />
-        <input class="un" type="text" align="center" placeholder="Mobile No" name="title" id="t4" />
-        <input class="un" type="text" align="center" placeholder="Role" name="title" id="t5" />
-        <input class="un" type="text" align="center" placeholder="Department ID" name="title" id="t6" />
-        <input class="un" type="text" align="center" placeholder="Group ID" name="title" id="t7" />
-        <input class="un" type="password" align="center" placeholder="Password" name="title" id="t8" />
+
+
+        <input class="un" type="text" align="center" placeholder="Name" name="Name" id="Emp_Name" readonly />
+        <input class="un" type="text" align="center" placeholder="Emp ID" name="title" id="Emp_ID" />
+        <input class="un" type="text" align="center" placeholder="E-mail" name="title" id="Emp_Email" />
+        <input class="un" type="text" align="center" placeholder="Mobile No" name="title" id="Mobile_Num" />
+        <input class="un" type="text" align="center" placeholder="Role" name="title" id="Emp_Role" />
+        <input class="un" type="text" align="center" placeholder="Department ID" name="title" id="Dept_ID" />
+        <input class="un" type="text" align="center" placeholder="Group ID" name="title" id="Group_ID" />
         <input class="submit" type="submit" value="Update">
+
+
     </form>
+
 </body>
