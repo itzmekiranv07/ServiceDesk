@@ -191,6 +191,7 @@
     <Content Include="Images\r6.jpg" />
     <Content Include="Images\r7.jpg" />
     <Content Include="Images\werr.jpg" />
+    <Content Include="Images\Win.png" />
     <Content Include="Lead.html" />
     <Content Include="Manager.html" />
     <Content Include="newTicket.html" />
