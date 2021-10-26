@@ -29,7 +29,9 @@ namespace ServiceDesk.Models
 
         internal Employee getProfile(int empid)
         {
-            throw new NotImplementedException();
+            Employee e = new Employee(1, "Kiran", "kiran@mail.com", "2234", "xvy", "79989786898", 1, 2);
+            return e;
+            //throw new NotImplementedException();
         }
 
         internal List<Ticket_Info> getCreatedTickets(int username)

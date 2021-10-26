@@ -21,22 +21,22 @@
             font-family: 'Ubuntu', sans-serif;
         }
         .un {
-            width: 76%;
+            width: 70%;
             color: rgb(38, 50, 56);
             font-weight: 700;
             font-size: 14px;
             letter-spacing: 1px;
             background: rgba(136, 126, 126, 0.04);
-            padding: 10px 20px;
+            padding: 6px 10px;
             border: none;
             border-radius: 20px;
             outline: none;
             box-sizing: border-box;
             border: 2px solid rgba(0, 0, 0, 0.02);
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             margin-left: 46px;
             text-align: center;
-            margin-bottom: 27px;
+            margin-bottom: 17px;
             font-family: 'Ubuntu', sans-serif;
         }
         .submit {
@@ -70,19 +70,16 @@
         <form name="myForm" method="post" required>
             <input class="un" type="text" align="center" placeholder="Title" name="title" id="tit" required />
             <textarea class="un" name="Text1" cols="10" rows="5" placeholder="Messages" id="msgs" required></textarea>
-            <select class="un" name="Priority" id="Pri" required>
-                <option value="HW">--Priority--</option>
+            <select class="un" name="Priority" id="Pri" required>     
                 <option value="Low">Low</option>
                 <option value="Medium">Medium</option>
                 <option value="High">High</option>
             </select>
             <select class="un" name="Status" id="Status" required>
-                <option value="HW">--Status--</option>
                 <option value="Assigned">Assigned</option>
                 <option value="Unassigned">Unassigned</option>
             </select>
             <select class="un" name="Issues" id="Issue" required>
-                <option value="HW">--Issues--</option>
                 <option value="HW">Hardware</option>
                 <option value="SW">Software</option>
                 <option value="Pay">Payment</option>

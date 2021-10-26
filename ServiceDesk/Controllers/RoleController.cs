@@ -33,7 +33,7 @@ namespace ServiceDesk.Controllers
         public ActionResult getEmployee(int Emp_ID)
         {
             WebAPIDBO dbo = new WebAPIDBO();
-            ViewData["Profile"] = JsonConvert.SerializeObject(dbo.getProfile(Emp_ID));
+            ViewData["Profile"]= JsonConvert.SerializeObject(dbo.getProfile(Emp_ID));
             return View();
         }
 
