@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "getEmployee";
+    //Layout = "~/Views/Shared/_MasterPage.cshtml";
+}
+
+<h2>getEmployee</h2>
+
+@ViewData["Profile"]
+
+@*<script>
+        $(document).ready(function () {
+            var profile = @Html.Raw(ViewData["Profile"]);
+</script>*@
+<body>
+    <form name="myForm" method="post">
+        <h1>Profile</h1>
+        <input type="text" name="EMP_NAME" value="<%: ViewData["ee"].ToString()%>">
+        <input class="un" type="text" align="center" placeholder="Name"  name="Name" id="Name" readonly />
+        <input class="un" type="text" align="center" placeholder="Emp ID" name="title" id="t2" />
+        <input class="un" type="text" align="center" placeholder="E-mail" name="title" id="t3" />
+        <input class="un" type="text" align="center" placeholder="Mobile No" name="title" id="t4" />
+        <input class="un" type="text" align="center" placeholder="Role" name="title" id="t5" />
+        <input class="un" type="text" align="center" placeholder="Department ID" name="title" id="t6" />
+        <input class="un" type="text" align="center" placeholder="Group ID" name="title" id="t7" />
+        <input class="un" type="password" align="center" placeholder="Password" name="title" id="t8" />
+        <input class="submit" type="submit" value="Update">
+    </form>
+</body>
