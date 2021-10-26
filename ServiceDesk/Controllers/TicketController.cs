@@ -4,24 +4,28 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ServiceDesk.Models;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 
 using Newtonsoft.Json;
 
 namespace ServiceDesk.Controllers
 {
+
     public class TicketController : Controller
     {
-        // GET: Ticket
-        public ActionResult getTicket(int ticketid)
-        {
-            ViewBag.Ticketid = ticketid;
+        [Route("Ticket/getTicket/{ticketid}")]
+        public ActionResult getTicket(string ticketid)
+        { 
             WebAPIDBO dbo = new WebAPIDBO();
-            ViewData["Tickets"] = JsonConvert.SerializeObject(dbo.getTicket(ticketid));
+            ViewData["Tickets"] = JsonConvert.SerializeObject(dbo.getTicket(int.Parse(ticketid)));
             return View();
         }
 
-        public ActionResult getnewTicket()
+        public ActionResult getnewTicket(int i)
         {
+            WebAPIDBO dbo = new WebAPIDBO();
             return View();
         }
 
@@ -41,15 +45,7 @@ namespace ServiceDesk.Controllers
             return View();
         }
 
-        //public ActionResult getAssignedTickets(int Emp_ID)
-        //{
-        //    return View();
-        //}
-
-        //public ActionResult getProfile(int emp_id)
-        //{
-        //    return View();
-        //}
+        
 
     }
 }

@@ -7,6 +7,18 @@ namespace ServiceDesk.Models
 {
     public class Employee
     {
+        public Employee(int emp_ID, string emp_Name, string emp_Email, string emp_Pwd, string emp_Role, string mobile_Num, int? dept_ID, int? group_ID)
+        {
+            Emp_ID = emp_ID;
+            Emp_Name = emp_Name;
+            Emp_Email = emp_Email;
+            Emp_Pwd = emp_Pwd;
+            Emp_Role = emp_Role;
+            Mobile_Num = mobile_Num;
+            Dept_ID = dept_ID;
+            Group_ID = group_ID;
+        }
+
         public int Emp_ID { get; set; }
         public string Emp_Name { get; set; }
         public string Emp_Email { get; set; }
@@ -49,6 +61,14 @@ namespace ServiceDesk.Models
 
     public class Group
     {
+        public Group(int group_ID, string group_Name, int dept_ID, int? team_Lead_ID)
+        {
+            Group_ID = group_ID;
+            Group_Name = group_Name;
+            Dept_ID = dept_ID;
+            Team_Lead_ID = team_Lead_ID;
+        }
+
         public int Group_ID { get; set; }
         public string Group_Name { get; set; }
         public int Dept_ID { get; set; }
@@ -57,6 +77,13 @@ namespace ServiceDesk.Models
 
     public class Dept
     {
+        public Dept(int dept_ID, string dept_Name, int? manager_ID)
+        {
+            Dept_ID = dept_ID;
+            Dept_Name = dept_Name;
+            Manager_ID = manager_ID;
+        }
+
         public int Dept_ID { get; set; }
         public string Dept_Name { get; set; }
         public Nullable<int> Manager_ID { get; set; }
