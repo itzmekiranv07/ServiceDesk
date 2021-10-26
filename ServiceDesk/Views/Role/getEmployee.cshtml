@@ -1,12 +1,13 @@
 ﻿
 @{
     ViewBag.Title = "getEmployee";
-    //Layout = "~/Views/Shared/_MasterPage.cshtml";
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
 }
 
 <h2>getEmployee</h2>
 
-@ViewData["Profile"]
+<link href="~/ProfileSheet.css" rel="stylesheet" />
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
@@ -27,21 +28,25 @@
 
 
 <body>
-    <form name="myForm" method="post">
+    <div class="agileits-main">
+        <div class="wrap">
+            <div class="a3">
+                <img src="~/Images/Win.png" width="150" height="100" />
+            </div>
+            <div class="a">
+                <form name="myForm" method="post">
 
-        <h1>Profile</h1>
-
-
-        <input class="un" type="text" align="center" placeholder="Name" name="Name" id="Emp_Name" readonly />
-        <input class="un" type="text" align="center" placeholder="Emp ID" name="title" id="Emp_ID" />
-        <input class="un" type="text" align="center" placeholder="E-mail" name="title" id="Emp_Email" />
-        <input class="un" type="text" align="center" placeholder="Mobile No" name="title" id="Mobile_Num" />
-        <input class="un" type="text" align="center" placeholder="Role" name="title" id="Emp_Role" />
-        <input class="un" type="text" align="center" placeholder="Department ID" name="title" id="Dept_ID" />
-        <input class="un" type="text" align="center" placeholder="Group ID" name="title" id="Group_ID" />
-        <input class="submit" type="submit" value="Update">
-
-
-    </form>
-
+                    <h1>Profile</h1>
+                    <input class="un" type="text" align="center"  name="Name" id="Emp_Name" />
+                    <input class="un" type="text" align="center"  name="title" id="Emp_ID" />
+                    <input class="un" type="text" align="center"  name="title" id="Emp_Email" />
+                    <input class="un" type="text" align="center"  name="title" id="Mobile_Num" />
+                    <input class="un" type="text" align="center"  name="title" id="Emp_Role" />
+                    <input class="un" type="text" align="center"  name="title" id="Dept_ID" />
+                    <input class="un" type="text" align="center"  name="title" id="Group_ID" />
+                    <input class="submit" type="submit" value="Update">
+                </form>
+            </div>
+        </div>
+    </div>
 </body>

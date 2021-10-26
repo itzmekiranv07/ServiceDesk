@@ -193,9 +193,11 @@
     <Content Include="Images\werr.jpg" />
     <Content Include="Images\Win.png" />
     <Content Include="Lead.html" />
+    <Content Include="LoginSheet.css" />
     <Content Include="Manager.html" />
     <Content Include="newTicket.html" />
     <Content Include="Profile.html" />
+    <Content Include="ProfileSheet.css" />
     <Content Include="User.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
