@@ -227,6 +227,10 @@
     <Content Include="Views\Ticket\Ticket.cshtml" />
     <Content Include="Views\Ticket\getTicket.cshtml" />
     <Content Include="Views\Ticket\getAssignedTickets.cshtml" />
+
+    <Content Include="Views\Ticket\getCreatedTickets.cshtml" />
+    <Content Include="Views\Role\getGroupMembers.cshtml" />
+    <Content Include="Views\Role\getGroupsinDept.cshtml" />
     <Content Include="Views\Role\getEmployee.cshtml" />
     <Content Include="Views\Shared\_MasterPage.cshtml" />
   </ItemGroup>

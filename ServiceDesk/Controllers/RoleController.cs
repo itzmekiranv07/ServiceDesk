@@ -37,19 +37,26 @@ namespace ServiceDesk.Controllers
             return View();
         }
 
+        [Route("Role/getGroupMembers")]
         [Route("Role/getGroupMembers/{Group_ID}")]
-        public ActionResult getGroupMembers(int Group_ID)// landing for lead
+        public ActionResult getGroupMembers(int? Group_ID)// landing for lead
         {
+            int grpid;
+            if (Group_ID == null) grpid = 0;
+            else grpid = (int)Group_ID;
+            // Group_Id
             WebAPIDBO dbo = new WebAPIDBO();
-            ViewData["GroupMembers"] = JsonConvert.SerializeObject(dbo.getGroupMembers(Group_ID));
+            ViewData["GroupMembers"] = JsonConvert.SerializeObject(dbo.getGroupMembers(grpid));
             return View();
         }
 
-        [Route("Role/getGroupMembers/{Dept_ID}")]
-        public ActionResult getGroupsinDept(int Dept_ID)// landing for manager
+        [Route("Role/getGroupsinDept")]
+        [Route("Role/getGroupsinDept/{Dept_ID}")]
+        public ActionResult getGroupsinDept(int? Dept_ID)// landing for manager
         {
+            if (Dept_ID == null) Dept_ID = 0;//Dept_ID = dept of logged in manager
             WebAPIDBO dbo = new WebAPIDBO();
-            ViewData["GroupsinDept"] = JsonConvert.SerializeObject(dbo.getGroups(Dept_ID));
+            ViewData["GroupsinDept"] = JsonConvert.SerializeObject(dbo.getGroups((int)Dept_ID));
             return View();
         }
         
