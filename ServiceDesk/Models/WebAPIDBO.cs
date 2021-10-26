@@ -68,6 +68,11 @@ namespace ServiceDesk.Models
             throw new NotImplementedException();
         }
 
+        internal List<Dept> getDepts()
+        {
+            throw new NotImplementedException();
+        }
+
         internal List<Employee> getProfiles(string role)
         {
             throw new NotImplementedException();

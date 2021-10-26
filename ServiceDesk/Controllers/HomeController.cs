@@ -16,7 +16,7 @@ namespace ServiceDesk.Controllers
     public class HomeController : Controller
     {
 
-        Employee E = new Employee();
+        //Employee E = new Employee();
         [AllowAnonymous]
         [HttpGet]
 
