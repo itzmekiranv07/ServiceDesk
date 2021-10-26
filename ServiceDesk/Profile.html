@@ -6,37 +6,18 @@
     <style>
         body {
             background-image: url('Images/r2.jpg');
-            /*background-image: url('Images/r16a.jpg');*/
+           
             background-attachment: fixed;
             background-size: 100% 100%;
-        }
-        div {
-            text-align: center;
         }
         .a {
             text-align: center;
             position: absolute;
             left: 60%;
             right: 5%;
-           /* background-image: url('Images/r5.jpg');*/
             top: 4%;
             bottom: 0%;
-        }
-        .button {
-            background-color: #4CAF50; /* Green */
-            border: none;
-            color: white;
-            padding: 7px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 15px;
-            margin: 8px 4px;
-            cursor: pointer;
-        }
-        .button2 {
-            background-color: #008CBA;
-        }
+        }    
         .un {
             width: 76%;
             color: rgb(38, 50, 56);
@@ -56,46 +37,51 @@
             margin-bottom: 27px;
             font-family: 'Ubuntu', sans-serif;
         }
+        .a3 {
+         
+            position: fixed;
+            left: 20%;
+            top: 55%;
+        }
+        .submit {
+            cursor: pointer;
+            border-radius: 5em;
+            color: #fff;
+            background: linear-gradient(to right, #9C27B0, #E040FB);
+            border: 0;
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-bottom: 10px;
+            padding-top: 10px;
+            font-family: 'Ubuntu', sans-serif;
+            margin-left: 35%;
+            font-size: 15px;
+            box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+        }
     </style>
 </head>
 <body>
     <div class="agileits-main">
         <div class="wrap">
-            <form action="#" method="post">
-               
-                <div class=" a">
+            <div class="a3">
+                <img src="Images/Win.png" width="150" height="100" />
+            </div>
+            <div class=" a">
+                <form name="myForm" method="post">
                     <h1>Profile</h1>
-                    <p></p>
-
                     <input class="un" type="text" align="center" placeholder="Name" name="title" id="tit" required />
-
                     <input class="un" type="text" align="center" placeholder="Emp ID" name="title" id="tit" required />
-
                     <input class="un" type="text" align="center" placeholder="E-mail" name="title" id="tit" required />
-
                     <input class="un" type="text" align="center" placeholder="Mobile No" name="title" id="tit" required />
-
                     <input class="un" type="text" align="center" placeholder="Role" name="title" id="tit" required />
-
                     <input class="un" type="text" align="center" placeholder="Department ID" name="title" id="tit" required />
-
                     <input class="un" type="text" align="center" placeholder="Group Name" name="title" id="tit" required />
-
                     <input class="un" type="text" align="center" placeholder="Lead" name="title" id="tit" required />
-
                     <input class="un" type="text" align="center" placeholder="Manager" name="title" id="tit" required />
-
-                    <div class="agile-submit" style=" position:center">
-                        <button class="button button2">VIEW</button>
-                        <button class="button button2">SUBMIT</button>
-                        <button class="button button2">RESET</button>
-                    </div>
-                </div>
-            </form>
+                    <input class="submit" type="submit" value="Update">
+                </form>
+            </div>
         </div>
     </div>
-
-
-
 </body>
 </html>
