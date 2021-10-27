@@ -2,229 +2,37 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <title>Welcome</title>
-    <style>
-        body {
-            background-image: url('Images/r6.jpg');
-            background-attachment: fixed;
-            background-size: 100% 100%;
-        }
-
-        h1 {
-            font-family: 'Book Antiqua';
-            color: white;
-            position: absolute;
-            top: 0%;
-            left: 40%;
-            text-align: center;
-        }
-
-        .a1 {
-            position: absolute;
-            left: 10%;
-            right: 10%;
-            top: 10%;
-            bottom: 10%;
-            background-image: url("Images/r5.jpg")
-            /*background-color: white*/
-        }
-
-        .a2 {
-            position: absolute;
-            left: 0%;
-            right: 60%;
-            top: 0%;
-            bottom: 0%;
-            background-image: url('Images/r3.jpg');
-            background-attachment: inherit;
-            background-size: 100% 100%;
-        }
-
-        h5 {
-            color: white;
-            text-align: center;
-            font-size: xx-large;
-            position: absolute;
-            left: 1%;
-            right: 1%;
-            top: 5%;
-            font-family: Gabriola;
-        }
-
-        .sign {
-            padding-top: 40px;
-            color: #8C55AA;
-            font-family: 'Ubuntu', sans-serif;
-            font-weight: bold;
-            font-size: 23px;
-        }
-
-        .un {
-            width: 76%;
-            color: rgb(38, 50, 56);
-            font-weight: 700;
-            font-size: 14px;
-            letter-spacing: 1px;
-            background: rgba(136, 126, 126, 0.04);
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            outline: none;
-            box-sizing: border-box;
-            border: 2px solid rgba(0, 0, 0, 0.02);
-            margin-bottom: 50px;
-            margin-left: 46px;
-            text-align: center;
-            margin-bottom: 27px;
-            font-family: 'Ubuntu', sans-serif;
-        }
-
-        form.form1 {
-            padding-top: 40px;
-        }
-
-        .pass {
-            width: 76%;
-            color: rgb(38, 50, 56);
-            font-weight: 700;
-            font-size: 14px;
-            letter-spacing: 1px;
-            background: rgba(136, 126, 126, 0.04);
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            outline: none;
-            box-sizing: border-box;
-            border: 2px solid rgba(0, 0, 0, 0.02);
-            margin-bottom: 50px;
-            margin-left: 46px;
-            text-align: center;
-            margin-bottom: 27px;
-            font-family: 'Ubuntu', sans-serif;
-        }
-
-
-            .un:focus, .pass:focus {
-                border: 2px solid rgba(0, 0, 0, 0.18) !important;
-            }
-
-        .submit {
-            cursor: pointer;
-            border-radius: 5em;
-            color: #fff;
-            background: linear-gradient(to right, #9C27B0, #E040FB);
-            border: 0;
-            padding-left: 40px;
-            padding-right: 40px;
-            padding-bottom: 10px;
-            padding-top: 10px;
-            font-family: 'Ubuntu', sans-serif;
-            margin-left: 35%;
-            font-size: 13px;
-            box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
-        }
-
-        .forgot {
-            /*text-shadow: 0px 1px 3px rgba(117, 117, 117, 0.12);*/
-            color: #E1BEE7;
-            padding-top: 15px;
-        }
-
-        a {
-            text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
-            color: black;
-            text-decoration: none
-        }
-
-
-        .a3 {
-            position: absolute;
-            left: 50%;
-            right: 10%;
-            top: 20%;
-            bottom: 30%;
-        }
-
-        .a4 {
-            position: absolute;
-            left: 40%;
-            right: 0%;
-            top: 0%;
-            bottom: 85%;
-        }
-
-        .a5 {
-            position: absolute;
-            left: 80%;
-            right: 0%;
-            top: 90%;
-            bottom: 15%;
-        }
-
-        h6 {
-            position: absolute;
-            left: 80%;
-            right: 0%;
-            top: 85%;
-            bottom: 17%;
-        }
-
-        .a7 {
-            color: white;
-            position: absolute;
-            left: 12%;
-            right: 1%;
-            top: 80%;
-            bottom: 10%;
-        }
-    </style>
-    <script>
-        function validateForm() {
-            var x = document.forms["myForm"]["username"].value;
-            if (x == "" || x == null) {
-                alert("Username must be filled out");
-                return false;
-            }
-            var y = document.forms["myForm"]["password"].value;
-            if (y == "" || y == null) {
-                alert("Password must be filled out");
-                return false;
-            }
-
-        }
-    </script>
+<link href="~/LoginSheet.css" rel="stylesheet" />
 </head>
 
 <body>
     <h1>WinWire Service Desk</h1>
     <div class="a1">
         <div class="a2">
-            <h5>“Life is for service.”</h5>
+            
         </div>
         <div class="a7">
-            <!--<h4>People First</h4>
-            <h4>Execution Excellence</h4>
-            <h4>Technology Leadership </h4>-->
             <h4>Great Place To Work</h4>
-
         </div>
 
         <div class="a3">
             <p class="sign" align="center">Sign in</p>
-            <form name="myForm" onsubmit="return validateForm()" method="post" required>
-                <input class="un " type="number" align="center" placeholder="Username" name="empid" id="empid">
-                <input class="pass" type="password" align="center" placeholder="Password" name="pass_word" id="pass_word">
+
+            <form name="myForm"  method="post" required>
+                <input class="un " type="number" align="center" placeholder="Username" name="empid" id="empid" required>
+                <input class="pass" type="password" align="center" placeholder="Password" name="pass_word" id="pass_word" required>
+
                 <input class="submit" type="submit" align="center" value="Sign in">
                 <p class="forgot" align="left"><a href="" />Forgot Password?</p>
             </form>
         </div>
         <div class="a4">
-            <img src="Images/werr.jpg" width="615" height="150" />
+            <img src="~/Images/werr.jpg" width="615" height="150" />
         </div>
         <div class="a5">
             <p><a href="https://www.winwire.com/" />WinWire Technologies</p>

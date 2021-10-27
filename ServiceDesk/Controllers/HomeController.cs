@@ -6,24 +6,49 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+
 using Newtonsoft.Json;
+
 using ServiceDesk.Models;
 
 namespace ServiceDesk.Controllers
 {
     public class HomeController : Controller
     {
-        emp1 E = new emp1();
+
+        //Employee E = new Employee();
+        [AllowAnonymous]
+        [HttpGet]
+
         public ActionResult Index()
         {
-           
-            return View();
+           return View();
         }
 
         [HttpPost]
+
         public ActionResult Index (int empid, string pass_word)
         {
-            emp1 E = new emp1();
+            WebAPIDBO dbo = new WebAPIDBO();
+
+            bool check = dbo.validateLogin(empid,pass_word);
+
+            if(check == true)
+            {
+                Employee e = dbo.getProfile(empid);
+                Session["Employee"] = e;
+                if(e.Emp_Role == "User") return RedirectToAction("Users", "Role");
+                else if (e.Emp_Role == "Manager") return RedirectToAction("Manager", "Role");
+                else if (e.Emp_Role == "Lead") return RedirectToAction("Lead", "Role");
+                else return RedirectToAction("Admin", "Role");
+            }
+            else
+            {
+                return View();
+            }
+            
+            /*
+            Employee E = new Employee();
             using (var client = new HttpClient())
             {
 
@@ -40,7 +65,7 @@ namespace ServiceDesk.Controllers
 
                     var EmpResponse = result.Content.ReadAsStringAsync().Result;
                     //EmpResponse.Wait();
-                    E = JsonConvert.DeserializeObject<emp1>(EmpResponse);
+                    E = JsonConvert.DeserializeObject<Employee>(EmpResponse);
                     // = EmpResponse.Result;
                 }
                 else
@@ -54,6 +79,9 @@ namespace ServiceDesk.Controllers
 
             if (E.Empid==empid && E.Password==pass_word)
             {
+                Session["Employee"] = E;
+                Session["role"] = "User";
+
                 if (E.Role_assigned == "Users") return RedirectToAction("Users", "Role");
                     else if (E.Role_assigned== "Lead") return RedirectToAction("Lead", "Role");
                  else if (E.Role_assigned == "Manager") return RedirectToAction("Manager", "Role");
@@ -65,22 +93,11 @@ namespace ServiceDesk.Controllers
                 return View();
             }
                 
+            */
+
             
-            
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+       
     }
 }
