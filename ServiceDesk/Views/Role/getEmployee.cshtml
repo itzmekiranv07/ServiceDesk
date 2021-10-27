@@ -15,7 +15,7 @@
     $(document).ready(function () {
 
         var profile = @Html.Raw(ViewData["Profile"]);
-        var keys = Object.keys(profile);
+        var keys = Object.keys(profile); 
 
         $.each(keys, function (index, element) {
             $("#" + element).val(profile[element]);

@@ -13,16 +13,16 @@ namespace ServiceDesk.Controllers
         // GET: Role
         public ActionResult Users()
         {
-            return View();
+            return RedirectToAction("getAssignedTickets","Role");
         }
 
         public ActionResult Lead()
         {
-            return View();
+            return RedirectToAction("getGroupMembers", "Role");
         }
         public ActionResult Manager()
         {
-            return View();
+            return View("getGroupsinDept","Role");
         }
         public ActionResult Admin()
         {
@@ -41,12 +41,13 @@ namespace ServiceDesk.Controllers
         [Route("Role/getGroupMembers/{Group_ID}")]
         public ActionResult getGroupMembers(int? Group_ID)// landing for lead
         {
-            int grpid;
-            if (Group_ID == null) grpid = 0;
-            else grpid = (int)Group_ID;
-            // Group_Id
+            if(Group_ID == null)
+            {
+                Employee e = (Employee)Session["Employee"];
+                Group_ID = e.Group_ID;
+            }
             WebAPIDBO dbo = new WebAPIDBO();
-            ViewData["GroupMembers"] = JsonConvert.SerializeObject(dbo.getGroupMembers(grpid));
+            ViewData["GroupMembers"] = JsonConvert.SerializeObject(dbo.getGroupMembers((int)Group_ID));
             return View();
         }
 
