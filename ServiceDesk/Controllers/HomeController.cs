@@ -29,18 +29,15 @@ namespace ServiceDesk.Controllers
 
         public ActionResult Index (int empid, string pass_word)
         {
+
             WebAPIDBO dbo = new WebAPIDBO();
-
             bool check = dbo.validateLogin(empid,pass_word);
+            
 
-            if(check == true)
+            if (check == true)
             {
-                Employee e = dbo.getProfile(empid);
-                Session["Employee"] = e;
-                if(e.Emp_Role == "User") return RedirectToAction("Users", "Role");
-                else if (e.Emp_Role == "Manager") return RedirectToAction("Manager", "Role");
-                else if (e.Emp_Role == "Lead") return RedirectToAction("Lead", "Role");
-                else return RedirectToAction("Admin", "Role");
+                Session["Employee"] = dbo.getProfile(empid);
+                return RedirectToAction("StartRoute", "Role");
             }
             else
             {
