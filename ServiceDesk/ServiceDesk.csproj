@@ -163,11 +163,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-
-    <Compile Include="Models\emp1.cs" />
-
+    <Compile Include="Models\DBO_Delete.cs" />
+    <Compile Include="Models\DBO_Get.cs" />
+    <Compile Include="Models\DBO_Post.cs" />
     <Compile Include="Models\WebAPIDBO.cs" />
-
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

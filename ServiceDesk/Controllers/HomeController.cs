@@ -16,7 +16,7 @@ namespace ServiceDesk.Controllers
     public class HomeController : Controller
     {
 
-        emp1 E = new emp1();
+        
         [AllowAnonymous]
         [HttpGet]
 
@@ -28,9 +28,29 @@ namespace ServiceDesk.Controllers
 
         [HttpPost]
 
-        public ActionResult Index (int empid, string pass_word)
+        public ActionResult Index(int empid, string pass_word)
         {
-            emp1 E = new emp1();
+            WebAPIDBO dbo = new WebAPIDBO();
+
+            bool check = dbo.validateLogin(empid, pass_word);
+            return View();
+        }
+            //if(check == true)
+            //{
+            //    Employee e = dbo.getProfile(empid);
+            //    Session["Employee"] = e;
+            //    if(e.Emp_Role == "User") return RedirectToAction("Users", "Role");
+            //    else if (e.Emp_Role == "Manager") return RedirectToAction("Manager", "Role");
+            //    else if (e.Emp_Role == "Lead") return RedirectToAction("Lead", "Role");
+            //    else return RedirectToAction("Admin", "Role");
+            //}
+            //else
+            //{
+            //    return View();
+            //}
+            
+            /*
+            Employee E = new Employee();
             using (var client = new HttpClient())
             {
 
@@ -71,11 +91,10 @@ namespace ServiceDesk.Controllers
                 ViewBag.msg = "Wrong Credentials";
                 return View();
             }
-                
+                */
             
             
         }
 
        
     }
-}
