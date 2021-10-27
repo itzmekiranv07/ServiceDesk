@@ -1,0 +1,56 @@
+﻿body {
+    background-image: url('Images/r2.jpg');
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+.a {
+    text-align: center;
+    position: absolute;
+    left: 62%;
+    right: 5%;
+    top: 8%;
+    bottom: 0%;
+}
+
+.un {
+    width: 70%;
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(136, 126, 126, 0.04);
+    padding: 6px 10px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 30px;
+    margin-left: 46px;
+    text-align: center;
+    margin-bottom: 17px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.a3 {
+    position: fixed;
+    left: 20%;
+    top: 55%;
+}
+
+.submit {
+    cursor: pointer;
+    border-radius: 5em;
+    color: #fff;
+    background: linear-gradient(to right, #9C27B0, #E040FB);
+    border: 0;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 13%;
+    font-size: 15px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
