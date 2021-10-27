@@ -1,0 +1,36 @@
+﻿.b2 {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    background-image: url('../../Images/r10.png');
+    top: 0%;
+    bottom: 91%;
+}
+
+.b3 {
+    position: absolute;
+    left: 95%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+}
+
+.b4 {
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    bottom: 0%;
+}
+
+.b5 {
+    position: absolute;
+    left: 88%;
+    top: 10%;
+    bottom: 0%;
+}
+.b6 {
+    position:absolute;
+    left: 2%;
+    top:15%;
+  
+}

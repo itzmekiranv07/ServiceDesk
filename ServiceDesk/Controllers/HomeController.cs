@@ -16,38 +16,35 @@ namespace ServiceDesk.Controllers
     public class HomeController : Controller
     {
 
-        
+
         [AllowAnonymous]
         [HttpGet]
 
         public ActionResult Index()
         {
-           
-            return View();
+           return View();
         }
 
         [HttpPost]
 
         public ActionResult Index(int empid, string pass_word)
         {
-            WebAPIDBO dbo = new WebAPIDBO();
 
-            bool check = dbo.validateLogin(empid, pass_word);
-            return View();
-        }
-            //if(check == true)
-            //{
-            //    Employee e = dbo.getProfile(empid);
-            //    Session["Employee"] = e;
-            //    if(e.Emp_Role == "User") return RedirectToAction("Users", "Role");
-            //    else if (e.Emp_Role == "Manager") return RedirectToAction("Manager", "Role");
-            //    else if (e.Emp_Role == "Lead") return RedirectToAction("Lead", "Role");
-            //    else return RedirectToAction("Admin", "Role");
-            //}
-            //else
-            //{
-            //    return View();
-            //}
+
+            WebAPIDBO dbo = new WebAPIDBO();
+            bool check = dbo.validateLogin(empid,pass_word);
+            
+
+            if (check == true)
+            {
+                Session["Employee"] = dbo.getProfile(empid);
+                return RedirectToAction("StartRoute", "Role");
+            }
+            else
+            {
+                return View();
+            }
+
             
             /*
             Employee E = new Employee();
@@ -67,7 +64,7 @@ namespace ServiceDesk.Controllers
 
                     var EmpResponse = result.Content.ReadAsStringAsync().Result;
                     //EmpResponse.Wait();
-                    E = JsonConvert.DeserializeObject<emp1>(EmpResponse);
+                    E = JsonConvert.DeserializeObject<Employee>(EmpResponse);
                     // = EmpResponse.Result;
                 }
                 else
@@ -81,6 +78,9 @@ namespace ServiceDesk.Controllers
 
             if (E.Empid==empid && E.Password==pass_word)
             {
+                Session["Employee"] = E;
+                Session["role"] = "User";
+
                 if (E.Role_assigned == "Users") return RedirectToAction("Users", "Role");
                     else if (E.Role_assigned== "Lead") return RedirectToAction("Lead", "Role");
                  else if (E.Role_assigned == "Manager") return RedirectToAction("Manager", "Role");
@@ -91,8 +91,6 @@ namespace ServiceDesk.Controllers
                 ViewBag.msg = "Wrong Credentials";
                 return View();
             }
-                */
-            
             
         }
 
