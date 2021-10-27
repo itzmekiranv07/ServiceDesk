@@ -164,6 +164,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Tables.cs" />
+    <Compile Include="Models\DBO_Delete.cs" />
+    <Compile Include="Models\DBO_Get.cs" />
+    <Compile Include="Models\DBO_Post.cs" />
     <Compile Include="Models\WebAPIDBO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

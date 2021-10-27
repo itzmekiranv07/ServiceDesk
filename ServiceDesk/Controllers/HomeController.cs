@@ -16,7 +16,7 @@ namespace ServiceDesk.Controllers
     public class HomeController : Controller
     {
 
-        //Employee E = new Employee();
+
         [AllowAnonymous]
         [HttpGet]
 
@@ -27,8 +27,9 @@ namespace ServiceDesk.Controllers
 
         [HttpPost]
 
-        public ActionResult Index (int empid, string pass_word)
+        public ActionResult Index(int empid, string pass_word)
         {
+
 
             WebAPIDBO dbo = new WebAPIDBO();
             bool check = dbo.validateLogin(empid,pass_word);
@@ -43,6 +44,7 @@ namespace ServiceDesk.Controllers
             {
                 return View();
             }
+
             
             /*
             Employee E = new Employee();
@@ -89,12 +91,8 @@ namespace ServiceDesk.Controllers
                 ViewBag.msg = "Wrong Credentials";
                 return View();
             }
-                
-            */
-
             
         }
 
        
     }
-}
