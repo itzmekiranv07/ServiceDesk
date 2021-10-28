@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -29,39 +29,26 @@ namespace ServiceDesk.Controllers
 
         public ActionResult Index(int empid, string pass_word)
         {
-            //WebAPIDBO dbo = new WebAPIDBO();
-            //bool check = dbo.validateLogin(empid, pass_word);
-            //if (check == true)
-            //{
-            //    Session["Employee"] = dbo.getProfile(empid);
-            //    return RedirectToAction("StartRoute", "Role");
-            //}
-            //else
-            //{
-            //    return View();
-            //}
             WebAPIDBO dbo = new WebAPIDBO();
+
             Employee E=new Employee();
             E = dbo.getProfile(empid);
+            bool check = dbo.validateLogin(empid, pass_word);
 
-            if (E.Emp_ID==empid && E.Emp_Pwd==pass_word)
+            if (check == true)
             {
-                Session["Employee"] = E;
-                Session["role"] = "User";
-
-                if (E.Emp_Role== "Users") return RedirectToAction("Users", "Role");
-                    else if (E.Emp_Role== "Lead") return RedirectToAction("Lead", "Role");
-                 else if (E.Emp_Role == "Manager") return RedirectToAction("Manager", "Role");
-                else return RedirectToAction("Admin", "Role");
+                Session["Employee"] = dbo.getProfile(empid);
+                return RedirectToAction("StartRoute", "Role");
             }
             else
             {
-                ViewBag.msg = "Wrong Credentials";
                 return View();
             }
-            
-        }
-
 
         }
-    }
+
+      }
+
+}
+
+    

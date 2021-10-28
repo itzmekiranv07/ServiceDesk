@@ -203,6 +203,7 @@
     <Content Include="newTicket.html" />
     <Content Include="Profile.html" />
     <Content Include="ProfileSheet.css" />
+    <Content Include="Scripts\TicketLoad.js" />
     <Content Include="User.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
