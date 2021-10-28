@@ -34,12 +34,15 @@ namespace ServiceDesk.Controllers
         {
             WebAPIDBO dbo = new WebAPIDBO();
             Employee e = (Employee)Session["Employee"];
-            ViewData["CreatedTickets"]  = JsonConvert.SerializeObject(dbo.getCreatedTickets(e.Emp_ID)); 
+            ViewData["CreatedTickets"]  = JsonConvert.SerializeObject(dbo.getCreatedTickets(0)); 
             return View();
         }
 
-        public ActionResult getAssignedTickets()
+        [Route("Ticket/getAssignedTickets")]
+        [Route("Ticket/getAssignedTickets/{empid}")]
+        public ActionResult getAssignedTickets(int? empid)
         {
+            if (empid == null) empid = 0;// empid = id of logged in employee
             Employee e = (Employee)Session["Employee"];
             WebAPIDBO dbo = new WebAPIDBO();
             ViewData["AssignedTickets"] = JsonConvert.SerializeObject(dbo.getAssignedTickets(0));
