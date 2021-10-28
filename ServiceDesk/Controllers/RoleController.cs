@@ -10,12 +10,10 @@ namespace ServiceDesk.Controllers
 {
     public class RoleController : Controller
     {
-        // GET: Role
-
+        //asdasdasdasasdasdasd
         public ActionResult StartRoute()
         {
             WebAPIDBO dbo = new WebAPIDBO();
-
             Employee e = (Employee)Session["Employee"];
 
             if (e.Emp_Role == "User") return RedirectToAction("Users", "Role");
