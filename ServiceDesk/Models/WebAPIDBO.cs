@@ -25,9 +25,16 @@ namespace ServiceDesk.Models
 
         internal Ticket_Info getTicket(int ticketid)
         {
-            Ticket_Info t1 = new Ticket_Info(1, 2, 3, 2, "keyboard not working", "Not Assigned", "Medium", null, null, "A at 18:00 -> help pls");
+            Ticket_Info t1 = new Ticket_Info(1, 2, 3, 2, "keyboard not working", "Not Assigned", "Medium", 1, null, "A at 18:00 -> help pls");
             return t1;
             //throw new NotImplementedException();
+        }
+
+        internal object getTicketNames(int ticketid)
+        {
+            Ticket_Names t1 = new Ticket_Names(1, "Software", "IT", "Amit");
+            return t1;
+            // throw new NotImplementedException();
         }
 
         internal Employee getProfile(int empid)
