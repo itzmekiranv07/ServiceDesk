@@ -22,7 +22,7 @@ namespace ServiceDesk.Controllers
 
         public ActionResult Index()
         {
-           return View();
+            return View();
         }
 
         [HttpPost]
@@ -32,8 +32,8 @@ namespace ServiceDesk.Controllers
 
 
             WebAPIDBO dbo = new WebAPIDBO();
-            bool check = dbo.validateLogin(empid,pass_word);
-            
+            bool check = dbo.validateLogin(empid, pass_word);
+
 
             if (check == true)
             {
@@ -45,7 +45,7 @@ namespace ServiceDesk.Controllers
                 return View();
             }
 
-            
+
             /*
             Employee E = new Employee();
             using (var client = new HttpClient())
@@ -90,9 +90,9 @@ namespace ServiceDesk.Controllers
             {
                 ViewBag.msg = "Wrong Credentials";
                 return View();
-            }
-            
+            }*/
+
         }
 
-       
+    }
     }

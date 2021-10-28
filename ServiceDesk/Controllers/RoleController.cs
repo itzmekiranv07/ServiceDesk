@@ -36,7 +36,7 @@ namespace ServiceDesk.Controllers
         }
         public ActionResult Manager()
         {
-            return View("getGroupsinDept","Role");
+            return RedirectToAction("getGroupsinDept", "Role");
         }
         public ActionResult Admin()
         {

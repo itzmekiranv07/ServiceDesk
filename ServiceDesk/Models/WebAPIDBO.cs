@@ -33,7 +33,7 @@ namespace ServiceDesk.Models
         internal Employee getProfile(int empid)
         {
             Employee e1 = new Employee(1, "Kiran", "kiran@mail.com", "2234", "User", "79989786898", 1, 2);
-            Employee e2 = new Employee(2, "Amit", "amit@mail.com", "abc@123", "Lead", "123456789", 1, 2);
+            Employee e2 = new Employee(2, "Amit", "amit@mail.com", "abc@123", "Manager", "123456789", 1, 2);
             return e2;
             //throw new NotImplementedException();
         }
