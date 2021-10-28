@@ -15,7 +15,10 @@ namespace ServiceDesk.Models
     {
         internal bool validateLogin(int username, string password)
         {
-            throw new NotImplementedException();
+            Employee e = getProfile(username);
+            if (e.Emp_Pwd == password) return true;
+            else return false;
+            //throw new NotImplementedException();
         }
 
 
@@ -28,15 +31,23 @@ namespace ServiceDesk.Models
 
         internal Ticket_Info getTicket(int ticketid)
         {
-            Ticket_Info t1 = new Ticket_Info(1, 2, 3, 2, "keyboard not working", "Not Assigned", "Medium", null, null, "A at 18:00 -> help pls");
+            Ticket_Info t1 = new Ticket_Info(1, 2, 3, 2, "keyboard not working", "Not Assigned", "Medium", 1, null, "A at 18:00 -> help pls");
             return t1;
             //throw new NotImplementedException();
         }
 
+        internal object getTicketNames(int ticketid)
+        {
+            Ticket_Names t1 = new Ticket_Names(1, "Software", "IT", "Amit");
+            return t1;
+            // throw new NotImplementedException();
+        }
+
         internal Employee getProfile(int empid)
         {
-            Employee e = new Employee(1, "Kiran", "kiran@mail.com", "2234", "xvy", "79989786898", 1, 2);
-            return e;
+            Employee e1 = new Employee(1, "Kiran", "kiran@mail.com", "2234", "User", "79989786898", 1, 2);
+            Employee e2 = new Employee(2, "Amit", "amit@mail.com", "abc@123", "Lead", "123456789", 1, 2);
+            return e2;
             //throw new NotImplementedException();
         }
 
@@ -92,6 +103,9 @@ namespace ServiceDesk.Models
 
         internal List<Dept> getDepts()
         {
+            Dept d1 = new Dept(1,"IT",2);
+            Dept d2 = new Dept(2, "Finance", 3);
+            return new List<Dept> { d1, d2 };
             throw new NotImplementedException();
         }
 

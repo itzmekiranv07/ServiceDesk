@@ -15,11 +15,22 @@ namespace ServiceDesk.Controllers
 
     public class TicketController : Controller
     {
+        [Route("Ticket/getTicket")]
         [Route("Ticket/getTicket/{ticketid}")]
-        public ActionResult getTicket(string ticketid)
-        { 
+        public ActionResult getTicket(int? ticketid) 
+        {
+            if (ticketid == null) ticketid = -1;
             WebAPIDBO dbo = new WebAPIDBO();
-            ViewData["Tickets"] = JsonConvert.SerializeObject(dbo.getTicket(int.Parse(ticketid)));
+            Ticket_Info t = dbo.getTicket((int)ticketid);
+            //ViewData["UserNow"] = JsonConvert.SerializeObject((Employee)Session["Employee"]);
+            ViewData["UserNow"] = JsonConvert.SerializeObject(dbo.getProfile(0));
+            ViewData["Tickets"] = JsonConvert.SerializeObject(t);
+            ViewData["TicketNames"] = JsonConvert.SerializeObject(dbo.getTicketNames((int)ticketid));
+            ViewData["Depts"] = JsonConvert.SerializeObject(dbo.getDepts());
+            
+            if(t.Dept_ID != null) ViewData["Groups"] = JsonConvert.SerializeObject(dbo.getGroups((int)t.Dept_ID));
+            if (true) ViewData["Emps"] = JsonConvert.SerializeObject(dbo.getGroupMembers((int)t.Group_ID));//check for manager
+
             return View();
         }
 

@@ -59,6 +59,28 @@ namespace ServiceDesk.Models
 
     }
 
+
+    public class Ticket_Names
+    {
+        public Ticket_Names(int ticket_ID, string group_Name, string dept_Name, string emp_Name)
+        {
+            Ticket_ID = ticket_ID;
+            Group_Name = group_Name;
+            Dept_Name = dept_Name;
+            Emp_Name = emp_Name;
+        }
+
+        public int Ticket_ID { get; set; }
+        public string Group_Name { get; set; }
+        public string Dept_Name { get; set; }
+        public string Emp_Name { get; set; }
+
+
+
+
+
+    }
+
     public class Group
     {
         //public Group(int group_ID, string group_Name, int dept_ID, int? team_Lead_ID)
@@ -87,6 +109,6 @@ namespace ServiceDesk.Models
         public int Dept_ID { get; set; }
         public string Dept_Name { get; set; }
         public Nullable<int> Manager_ID { get; set; }
-    }
+    } 
 
 }
