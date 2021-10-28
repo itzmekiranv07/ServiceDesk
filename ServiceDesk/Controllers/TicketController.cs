@@ -22,6 +22,8 @@ namespace ServiceDesk.Controllers
             if (ticketid == null) ticketid = -1;
             WebAPIDBO dbo = new WebAPIDBO();
             Ticket_Info t = dbo.getTicket((int)ticketid);
+            //ViewData["UserNow"] = JsonConvert.SerializeObject((Employee)Session["Employee"]);
+            ViewData["UserNow"] = JsonConvert.SerializeObject(dbo.getProfile(0));
             ViewData["Tickets"] = JsonConvert.SerializeObject(t);
             ViewData["TicketNames"] = JsonConvert.SerializeObject(dbo.getTicketNames((int)ticketid));
             ViewData["Depts"] = JsonConvert.SerializeObject(dbo.getDepts());

@@ -109,6 +109,6 @@ namespace ServiceDesk.Models
         public int Dept_ID { get; set; }
         public string Dept_Name { get; set; }
         public Nullable<int> Manager_ID { get; set; }
-    }
+    } 
 
 }
