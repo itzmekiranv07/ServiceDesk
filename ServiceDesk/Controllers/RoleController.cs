@@ -11,9 +11,23 @@ namespace ServiceDesk.Controllers
     public class RoleController : Controller
     {
         // GET: Role
+
+        public ActionResult StartRoute()
+        {
+            WebAPIDBO dbo = new WebAPIDBO();
+
+            Employee e = (Employee)Session["Employee"];
+
+            if (e.Emp_Role == "User") return RedirectToAction("Users", "Role");
+            else if (e.Emp_Role == "Manager") return RedirectToAction("Manager", "Role");
+            else if (e.Emp_Role == "Lead") return RedirectToAction("Lead", "Role");
+            else return RedirectToAction("Admin", "Role");
+        }
+
+
         public ActionResult Users()
         {
-            return RedirectToAction("getAssignedTickets","Role");
+            return RedirectToAction("getAssignedTickets", "Role");
         }
 
         public ActionResult Lead()
@@ -22,18 +36,25 @@ namespace ServiceDesk.Controllers
         }
         public ActionResult Manager()
         {
-            return View("getGroupsinDept","Role");
+            return RedirectToAction("getGroupsinDept", "Role");
         }
         public ActionResult Admin()
         {
             return View();
         }
 
+        [Route("Role/getEmployee")]
         [Route("Role/getEmployee/{Emp_ID}")]
-        public ActionResult getEmployee(int Emp_ID)
+        public ActionResult getEmployee(int? Emp_ID)
         {
+            if (Emp_ID == null)
+            {
+                Employee e = (Employee)Session["Employee"];
+                Emp_ID = e.Emp_ID;
+            }
+
             WebAPIDBO dbo = new WebAPIDBO();
-            ViewData["Profile"]= JsonConvert.SerializeObject(dbo.getProfile(Emp_ID));
+            ViewData["Profile"] = JsonConvert.SerializeObject(dbo.getProfile((int)Emp_ID));
             return View();
         }
 
@@ -41,7 +62,7 @@ namespace ServiceDesk.Controllers
         [Route("Role/getGroupMembers/{Group_ID}")]
         public ActionResult getGroupMembers(int? Group_ID)// landing for lead
         {
-            if(Group_ID == null)
+            if (Group_ID == null)
             {
                 Employee e = (Employee)Session["Employee"];
                 Group_ID = e.Group_ID;
@@ -57,10 +78,10 @@ namespace ServiceDesk.Controllers
         {
             if (Dept_ID == null) Dept_ID = 0;//Dept_ID = dept of logged in manager
             WebAPIDBO dbo = new WebAPIDBO();
-            ViewData["GroupsinDept"] = JsonConvert.SerializeObject(dbo.getGroups((int)Dept_ID));
+            ViewData["GroupsinDept"] = JsonConvert.SerializeObject(dbo.GetGroupsinDept((int)Dept_ID));
             return View();
         }
-        
+
         //[Route("Role/getDepts")]
         public ActionResult getDepts() // landing for admin
         {
