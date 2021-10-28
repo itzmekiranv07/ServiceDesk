@@ -16,9 +16,10 @@ namespace ServiceDesk.Controllers
     public class TicketController : Controller
     {
         [Route("Ticket/getTicket/{ticketid}")]
-        public ActionResult getTicket(string ticketid)
+        public ActionResult getTicket(string ticketid) 
         { 
             WebAPIDBO dbo = new WebAPIDBO();
+            ViewData["Depts"] = JsonConvert.SerializeObject(dbo.getDepts());
             ViewData["Tickets"] = JsonConvert.SerializeObject(dbo.getTicket(int.Parse(ticketid)));
             return View();
         }

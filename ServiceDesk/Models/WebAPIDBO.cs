@@ -72,6 +72,9 @@ namespace ServiceDesk.Models
 
         internal List<Dept> getDepts()
         {
+            Dept d1 = new Dept(1,"IT",2);
+            Dept d2 = new Dept(2, "Finance", 3);
+            return new List<Dept> { d1, d2 };
             throw new NotImplementedException();
         }
 
