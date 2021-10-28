@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -29,11 +29,11 @@ namespace ServiceDesk.Controllers
 
         public ActionResult Index(int empid, string pass_word)
         {
-
-
             WebAPIDBO dbo = new WebAPIDBO();
-            bool check = dbo.validateLogin(empid, pass_word);
 
+            Employee E=new Employee();
+            E = dbo.getProfile(empid);
+            bool check = true;
 
             if (check == true)
             {
