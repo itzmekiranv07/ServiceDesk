@@ -38,7 +38,7 @@ namespace ServiceDesk.Controllers
         }
         public ActionResult Admin()
         {
-            return View();
+            return RedirectToAction("getDepts", "Role");
         }
 
         [Route("Role/getEmployee")]
@@ -54,6 +54,42 @@ namespace ServiceDesk.Controllers
             WebAPIDBO dbo = new WebAPIDBO();
             ViewData["Profile"] = JsonConvert.SerializeObject(dbo.getProfile((int)Emp_ID));
             return View();
+        }
+
+        [Route("Role/updateEmployee")]
+        
+        public ActionResult updateEmployee(string Name,string Email,string Mobile)
+        {
+            
+           
+                Employee e = (Employee)Session["Employee"];
+            Employee E1 = new Employee();
+            E1.Emp_ID = e.Emp_ID;
+            E1.Emp_Name = Name;
+            E1.Emp_Email = Email;
+            E1.Emp_Pwd = e.Emp_Pwd;
+            E1.Emp_Role = e.Emp_Role;
+            E1.Group_ID = e.Group_ID;
+            E1.Dept_ID = e.Dept_ID;
+            E1.Mobile_Num = Mobile;
+            
+            
+
+            WebAPIDBO dbo = new WebAPIDBO();
+            string s = dbo.PutProfile(E1);
+            if(s== "1 row updated")
+            {
+                int empid = E1.Emp_ID;
+                ViewData["Profile"] = JsonConvert.SerializeObject(dbo.getProfile(empid));
+                return View();
+            }
+            else
+            {
+                ViewBag.msg = "Not updated";
+                return RedirectToAction("getEmployee", "Role");
+            }
+           
+            
         }
 
         [Route("Role/getGroupMembers")]
@@ -80,7 +116,7 @@ namespace ServiceDesk.Controllers
             return View();
         }
 
-        //[Route("Role/getDepts")]
+        [Route("Role/getDepts")]
         public ActionResult getDepts() // landing for admin
         {
             WebAPIDBO dbo = new WebAPIDBO();

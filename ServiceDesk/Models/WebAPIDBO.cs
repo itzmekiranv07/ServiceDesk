@@ -652,7 +652,7 @@ namespace ServiceDesk.Models
                 client.Headers["Content-type"] = "application/json";
                 client.Encoding = Encoding.UTF8;
                 string json = client.UploadString(apiUrl, inputJson);
-                if (json == "1 row updated")
+                if (json.Contains("1 row updated"))
                 {
                     return "1 row updated";
                 }
