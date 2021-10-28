@@ -10,7 +10,6 @@ namespace ServiceDesk.Controllers
 {
     public class RoleController : Controller
     {
-        // GET: Role
 
         public ActionResult StartRoute()
         {
