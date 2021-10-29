@@ -1,6 +1,6 @@
 @{
     ViewBag.Title = "getTicket";
-    //Layout = "~/Views/Shared/_MasterPage.cshtml";
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
 
 }
 <h2>getTicket</h2>
@@ -11,7 +11,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-
+<link href="~/GetTicket.css" rel="stylesheet" />
 
 <script>
 
@@ -106,54 +106,66 @@
             document.getElementById('messagebody').value = ticket["Messagess"];
 
             ticket["Title"] = $('#title').val();
-            
-            
         }
 
     });
+
+
 
 </script>
 
 
 <body>
-
-    <input id="title" />
-
-    <a id="creatorlink">View Ticket Creator's Profile</a>
+    <div class="a5">
+        <h2>Ticket</h2>
+    </div>
     
-    <a id="assignedlink">View Assigned Employee's Profile</a>
+    <div class="a3">
+        <label class="c1">Title</label>
+        <br />
+        <label class="c2">Department</label>
+        <br />
+        <label class="c3">Group</label>
+        <br />
+        <label class="c4">Employee</label>
+        <br />
+        <label class="c5">Priority</label>
+        <br />
+        <label class="c6">Message Box</label>
+        <br />
+        <label class="c7">Message</label>
+    </div>
 
-    <select id="seldept">
-        
-    </select>
+    <div class="display">
+        <div class="a4">
+            <input class="un" id="title" />
+            <br />
+            <select class="un" id="seldept">
+            </select>
+            <br />
+            <select class="un" id="selgrp">
+            </select>
+            <br />
+            <select class="un" id="selemp">
+            </select>
+            <br />
+            <select class="un" id="priority">
+            </select>
+            <br />
+            <a class="submit" id="creatorlink"> View Ticket Creator's Profile</a>
+            <p></p>
+            <a class="submit" id="assignedlink"> View Assigned Employee's Profile</a>
+            <p></p>
+            <textarea class="un" id="messagebody">
+       </textarea>
+            <br />
 
-    <select id="selgrp">
+            <input class="un" type="text" id="messagesbox" value="Type here" />
 
-    </select>
-
-    <select id="selemp">
-
-    </select>
-
-    <select id="priority">
-
-    </select>
-
-
-    <textarea id="messagebody">
-
-    </textarea>
-
-    <input type="text" id="messagesbox" value="Type here"/> <input type="button" id="submessage" value="Send and Update"/>
-
-
-    
-
+            <input class="submit" type="button" id="submessage" value="Send and Update" />
+        </div>
+    </div>
 
 
 
 </body>
-
-
-
-
