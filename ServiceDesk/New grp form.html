@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>
+        Entry Page for Department
+    </title>
+    <link rel="stylesheet" href="style1.css" type="text/css" />
+</head>
+<style>
+    .a {
+        text-align: center;
+        position: absolute;
+        left: 40%;
+        right: 40%;
+        background-image: url('Images/dept small2.jpeg');
+    }
+    .select{
+        padding: 8px 12px;
+        color: black;
+        background-color:white;
+        border: 1px solid #b6ff00
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .select:focus,
+    .select:hover {
+        outline: none;
+        border: 1px solid #bbbbbb;
+    }
+
+    .select option {
+        background: white;
+    }
+    
+</style>
+<body>
+    <div class="main">
+        <div class="a" style="color:aqua">
+            <div class="regiter">
+                <h2>
+                    Enter the Details
+                </h2>
+                <form id="register" method="post">
+
+                    <label>
+                        Group_ID:
+                    </label>
+                    <input type="text" placeholder="--------Enter Group_id--------"/><br />
+                    <br />
+
+
+
+                    <label>
+                        Group Name:
+                    </label>
+
+                    <select class="select" >
+                        <option disabled selected>Choose Group Name</option>
+                        <option value="Hardware">Hardware</option>
+                        <option value="Software">Software</option>
+                        <option value="Others">Others</option>
+
+                    </select>
+                    <br />
+                    <br />
+
+
+
+
+                    <label>
+                        Department_ID:
+                    </label>
+                    <input type="text" placeholder="----Enter Department_id----"/>
+                    <br />
+                    <br />
+
+                    <label>
+                        Team_Lead_ID:
+                    </label>
+                    <input type="text" placeholder="-----Enter Team_Lead_id-----"/>
+                    <br />
+                    <br />
+                    <br />
+
+                    <input type="submit" value="Submit" name="submit" id="submit" />
+
+                </form>
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+</body>
+</html>

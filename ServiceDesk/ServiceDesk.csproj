@@ -180,6 +180,10 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="HomePage.html" />
+    <Content Include="Images\dep img.jpg" />
+    <Content Include="Images\dept small1.jpeg" />
+    <Content Include="Images\dept small2.jpeg" />
+    <Content Include="Images\dept small3.jpeg" />
     <Content Include="Images\r10.png" />
     <Content Include="Images\R11.jpg" />
     <Content Include="Images\R12.jpg" />
@@ -198,9 +202,13 @@
     <Content Include="LoginSheet.css" />
     <Content Include="Manager.html" />
     <Content Include="MasterSheet.css" />
+    <Content Include="New dept form.html" />
+    <Content Include="New grp form.html" />
     <Content Include="newTicket.html" />
     <Content Include="Profile.html" />
     <Content Include="ProfileSheet.css" />
+    <Content Include="style1.css" />
+    <Content Include="style2.css" />
     <Content Include="User.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
