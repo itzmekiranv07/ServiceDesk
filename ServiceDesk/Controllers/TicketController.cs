@@ -26,7 +26,7 @@ namespace ServiceDesk.Controllers
                 ticketid = -1;
                 Ticket_Info newticket = new Ticket_Info();
                 newticket.Ticket_ID = -1; newticket.Progress = 0;newticket.Priority_Info = "Low";newticket.Messagess = "";
-                newticket.Group_ID = null; newticket.Dept_ID = null; newticket.Emp_ID = 1;newticket.Title = "";
+                newticket.Group_ID = null; newticket.Dept_ID = null; newticket.Emp_ID = e.Emp_ID;newticket.Title = "";
                 newticket.Status_Info = ""; newticket.Assigned_To = null;
                 ViewData["Tickets"] = JsonConvert.SerializeObject(newticket);
             }

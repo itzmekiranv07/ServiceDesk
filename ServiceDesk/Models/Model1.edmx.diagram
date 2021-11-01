@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6c8911026fd743a684e71be48105bbb5" Name="Diagram1">
+        <EntityTypeShape EntityType="TeamEModel.Department" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamEModel.Employee" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamEModel.Group" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamEModel.Tickets_Info" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="TeamEModel.FK__Employee__Dept_I__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamEModel.FK__Groups__Dept_ID__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamEModel.FK__Tickets_I__Dept___71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamEModel.FK__Employee__Group___6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamEModel.FK__Groups__Team_Lea__6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamEModel.FK__Tickets_I__Assig__73BA3083" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamEModel.FK__Tickets_I__Emp_I__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamEModel.FK__Tickets_I__Group__72C60C4A" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
