@@ -35,9 +35,13 @@ namespace ServiceDesk.Controllers
             E = dbo.getProfile(empid);
             bool check = true;
 
+
             if (check == true)
             {
                 Session["Employee"] = dbo.getProfile(empid);
+
+                Session["Emp"] = new Emp(E.Emp_ID,E.Emp_Name,E.Emp_Role);
+
                 return RedirectToAction("StartRoute", "Role");
             }
             else

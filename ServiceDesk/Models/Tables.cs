@@ -5,6 +5,20 @@ using System.Web;
 
 namespace ServiceDesk.Models
 {
+    public class Emp
+    {
+        public Emp(int emp_ID, string emp_Name, string emp_Role)
+        {
+            Emp_ID = emp_ID;
+            Emp_Name = emp_Name;
+            Emp_Role = emp_Role;
+        }
+
+        public int Emp_ID { get; set; }
+        public string Emp_Name { get; set; }
+
+        public string Emp_Role { get; set; }
+    }
     public class Employee
     {
         //public Employee(int emp_ID, string emp_Name, string emp_Email, string emp_Pwd, string emp_Role, string mobile_Num, int? dept_ID, int? group_ID)
