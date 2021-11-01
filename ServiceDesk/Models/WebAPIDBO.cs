@@ -464,7 +464,7 @@ namespace ServiceDesk.Models
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("http://teamewebapi.azurewebsites.net/api/Values/Deptbyid");
+                    client.BaseAddress = new Uri("http://teamewebapi.azurewebsites.net/api/Values/Deptbygrpid");
                     client.DefaultRequestHeaders.Clear();
                     var s = client.BaseAddress + "/" + grp_id;
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -536,7 +536,7 @@ namespace ServiceDesk.Models
                 return E.ToString();
             }
             
-        }
+          }
 
         internal string newEmployee(Employee Emp)
         {
@@ -830,32 +830,80 @@ namespace ServiceDesk.Models
             }
         }
 
-                    internal string Del_Group(int grp_id)
-                    {
+        internal string Del_Group(int grp_id)
+        {
 
-                        try
-                        {
-                            string apiUrl = "http://teamewebapi.azurewebsites.net/api/Values/Del_Grp";
-                            string s = grp_id.ToString();
-                            //string api = apiUrl + "/" + s;
-                            //string inputJson = (new JavaScriptSerializer()).Serialize(ticketid);
-                            WebClient client = new WebClient();
-                            client.Headers["Content-type"] = "application/json";
-                            client.Encoding = Encoding.UTF8;
-                            string json = client.UploadString(apiUrl, s);
-                            if (json.Contains("Removed"))
-                            {
-                                return "Removed";
-                            }
-                            else
-                            {
-                                return "Not Record Found";
-                            }
-                        }
-                        catch (Exception E)
-                        {
-                            return E.ToString();
-                        }
+            try
+            {
+                string apiUrl = "http://teamewebapi.azurewebsites.net/api/Values/Del_Grp";
+                string s = grp_id.ToString();
+                //string api = apiUrl + "/" + s;
+                //string inputJson = (new JavaScriptSerializer()).Serialize(ticketid);
+                WebClient client = new WebClient();
+                client.Headers["Content-type"] = "application/json";
+                client.Encoding = Encoding.UTF8;
+                string json = client.UploadString(apiUrl, s);
+                if (json.Contains("Removed"))
+                {
+                    return "Removed";
+                }
+                else
+                {
+                    return "Not Record Found";
+                }
+            }
+            catch (Exception E)
+            {
+                return E.ToString();
+            }
+        }
+        /*
+        internal Dept GetDeptbyDeptID(int deptid)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+
+                    client.BaseAddress = new Uri("http://teamewebapi.azurewebsites.net/api/Values/Profile");
+                    client.DefaultRequestHeaders.Clear();
+                    var s = client.BaseAddress + "/" + deptid;
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    var Res = client.GetAsync(s);
+                    Res.Wait();
+                    var result = Res.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var EmpResponse = result.Content.ReadAsStringAsync().Result;
+                        //EmpResponse.Wait();
+                        Dept dept;
+                        dept = JsonConvert.DeserializeObject<Dept>(EmpResponse);
+                        return dept;
+                        // = EmpResponse.Result;
                     }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+            catch (Exception E)
+            {
+                throw E;
+            }
+        }
+        */
+        internal Ticket_Names getTicket_Names(int ticketid, int? grpid, int? deptid, int? assign)
+        {
+            string groupname, deptname, assigned;
+            if (grpid == null) groupname = "Unassigned";
+            else groupname = GetGroupbygrpid((int)grpid).Group_Name;
+            if (deptid == null) deptname = "Unassigned";
+            else deptname = GetDeptbygrpid((int)deptid).Dept_Name; 
+            if (assign == null) assigned = "Unassigned";
+            else assigned = getProfile((int)assign).Emp_Name;  
+            Ticket_Names t = new Ticket_Names(ticketid,groupname,deptname,assigned);
+            return t;
+        }
     }
 }
