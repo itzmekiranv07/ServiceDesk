@@ -5,118 +5,137 @@
 }
 <h2>getTicket</h2>
 
-@ViewData["Tickets"]
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="~/Scripts/"></script>
+
+<link href="~/GetTicket.css" rel="stylesheet" />
+
 <script>
-        $(document).ready(function () {
-
-            var sessionEmp = @Html.Raw(ViewData["employee"]);
-
-            var ticketnames = @Html.Raw(ViewData["TicketNames"]);
-
-            var ticket = @Html.Raw(ViewData["Tickets"]);
-
-            var depts = @Html.Raw(ViewData["Depts"]);
-
+    var session = @Html.Raw(ViewData["UserNow"]);
+    var ticket = @Html.Raw(ViewData["Tickets"]);
+    var ticketnames = @Html.Raw(ViewData["TicketNames"]);
+    var depts = @Html.Raw(ViewData["Depts"]);
+    $(document).ready(function () {
+        //created by - View for all : C,A,L,M
+        //Title
+        if (true) {//check if its not new ticket
+            $('#title').val(ticket["Title"]);
+            $('#title').prop('readonly', true);
+        }
+        //Creator button
+        document.getElementById('creatorlink').setAttribute('href', '/Role/getEmployee/' + ticket["Emp_ID"]);
+        //Loading previous messages
+        document.getElementById('messagebody').value = ticket["Messagess"];
+        // assigned to - View by creator, manager and admin only if is already assigned by team lead
+        if (ticket["Assigned_To"] != null) {
+            document.getElementById('assignedlink').setAttribute('href', '/Role/getEmployee/' + ticket["Assigned_To"]);
+        }else $('#assignedlink').remove();
+        //Dept - select dept View to admin and creator else not visible
+        if (ticket["Ticket_ID"] == 1) { // should by null or -1 to signify new ticket
+            $.each(depts, function (index, element) {
+                $('#seldept').append(
+                    '<option value="' + element.Dept_ID + '">' + element.Dept_Name + '</option>'
+                );
+            });
+        }else if (false) {// check for creator or admin and hide for lead and assigned to
+            $('#seldept').append(
+                '<option value="' + ticket.Dept_ID + '">' + ticketnames.Dept_Name + '</option>'
+            );
+        }
+        //Group - select for manager, view to creator and admin, hide for everyone else
+        if (true) {
             var groups = @Html.Raw(ViewData["Groups"]);
-
-            var emps = @Html.Raw(ViewData["Employees"]);
-
-            if (ticket["Ticket_ID"] == -1 || sessionEmp.Emp_ID == ticket.Emp_ID) {
-
-                $('#Title').append(ticket.Title);
-
-                $('#creatorlink').attr('href', '/Role/getEmployee/' + ticket.Emp_ID);
-
-                $.each(depts, function (index, element){
-                    $('#selectDept').append(
-                        '<option value="' + element.Dept_ID + '">' + element.Dept_Name + '</option>'
-                    );
-                });
-
-                $('#selectGroup').append(
-                    '<option value="' + ticket.Group_ID + '">' + ticketnames.Group_Name + '</option>'
+            $.each(groups, function (index, element) {
+                $('#selgrp').append(
+                    '<option value="' + element.Group_ID + '">' + element.Group_Name + '</option>'
                 );
-
-                $('#selectEmp').append(
-                    '<option value="' + ticket.Assigned_To + '">' + ticketnames.Assigned_To_Name + '</option>'
+            });
+        } else {}
+        // Employee - select for lead view for others
+        if (true) {
+            var emps = @Html.Raw(ViewData["Emps"]);
+            $.each(emps, function (index, element) {
+                $('#selemp').append(
+                    '<option value="' + element.Emp_ID + '">' + element.Emp_Name + '</option>'
                 );
-
-                $('#selectEmp').remove();
-                $('#assignedlink').attr('href', '/Role/getEmployee/' + ticket.Assigned_To);
-            }
-
-
-
-            if (sessionEmp.Emp_Role == "Manager" && sessionEmp.Dept_ID == ticket.Dept_ID) {
-
-                $('#selectEmp').remove();
-                $.each(groups, function (index, element) {
-                    $('#selectGroup').append(
-                        '<option value="' + element.Group_ID + '">' + element.Group_Name + '</option>'
-                    );
-                });
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            });
+        } else { }
+        // Priority - select for manager view for else
+        if (true) {
+            var prios = ["Low", "Medium", "High"];
+            $.each(prios, function (index, element) {
+                $('#priority').append(
+                    '<option value="' + element + '">' + element + '</option>'
+                );
+            });
+        }
+        //Messages
+        //$('#messagebody').text = ticket["Messagess"];
+        document.getElementById("submessage").onclick = function () { myFunction() };
+        function myFunction() {
+            var message = $('#messagesbox').val();
+            ticket["Messagess"] += (session["Emp_Name"] + ": " + message);
+            document.getElementById('messagebody').value = ticket["Messagess"];
+            ticket["Title"] = $('#title').val();
+        }
     });
 </script>
 
+
 <body>
+    <div class="a5">
+        <h2>Ticket</h2>
+    </div>
 
+    <div class="a3">
+        <label class="c1">Title</label>
+        <br />
+        <label class="c2">Department</label>
+        <br />
+        <label class="c3">Group</label>
+        <br />
+        <label class="c4">Employee</label>
+        <br />
+        <label class="c5">Priority</label>
+        <br />
+        <label class="c6">Message Box</label>
+        <br />
+        <label class="c7">Message</label>
+    </div>
 
-    <form method="post" id="ticketform">
+    <div class="display">
+        <div class="a4">
+            <input class="un" id="title" />
+            <br />
+            <select class="un" id="seldept">
+            </select>
+            <br />
+            <select class="un" id="selgrp">
+            </select>
+            <br />
+            <select class="un" id="selemp">
+            </select>
+            <br />
+            <select class="un" id="priority">
+            </select>
+            <br />
+            <a class="submit" id="creatorlink"> View Ticket Creator's Profile</a>
+            <p></p>
+            <a class="submit" id="assignedlink"> View Assigned Employee's Profile</a>
+            <p></p>
+            <textarea class="un" id="messagebody">
+       </textarea>
+            <br />
 
-        <h1 id="header"></h1>
+            <input class="un" type="text" id="messagesbox" value="Type here" />
 
-        <lable>Title</lable>
-        <input class="un" type="text" align="center" name="title" id="Title" />
+            <input class="submit" type="button" id="submessage" value="Send and Update" />
+        </div>
+    </div>
 
-        <lable>Created By</lable>
-        <a id="creatorlink">View Profile</a>
-
-
-
-        <lable>Dept</lable>
-        <select id="selectDept">
-        </select>
-
-        <lable>Group</lable>
-        <select id="selectGroup">
-        </select>
-
-
-        <lable>Assigned To</lable>
-        <select id="selectEmp">
-        </select>
-        <a id="assignedlink">View Profile</a>
-
-
-        <input class="submit" type="submit" value="Update">
-
-    </form>
 
 
 </body>
-
-
-
-

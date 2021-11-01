@@ -33,7 +33,7 @@ namespace ServiceDesk.Models
                 using (var client = new HttpClient())
                 {
 
-                    client.BaseAddress = new Uri("https://localhost:44397/api/Values/Ticket");
+                    client.BaseAddress = new Uri("http://teamewebapi.azurewebsites.net/api/Values/Ticket");
                     var s = client.BaseAddress + "/" + ticketid;
                     client.DefaultRequestHeaders.Clear();
 
@@ -70,7 +70,7 @@ namespace ServiceDesk.Models
                 using (var client = new HttpClient())
                 {
 
-                    client.BaseAddress = new Uri("https://localhost:44397/api/Values/Profile");
+                    client.BaseAddress = new Uri("http://teamewebapi.azurewebsites.net/api/Values/Profile");
                     client.DefaultRequestHeaders.Clear();
                     var s = client.BaseAddress + "/" + empid;
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -109,7 +109,7 @@ namespace ServiceDesk.Models
                 using (var client = new HttpClient())
                 {
 
-                    client.BaseAddress = new Uri("https://localhost:44397/api/Values/Groups");
+                    client.BaseAddress = new Uri("http://teamewebapi.azurewebsites.net/api/Values/Groups");
                     client.DefaultRequestHeaders.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     var Res = client.GetAsync(client.BaseAddress);
@@ -144,7 +144,7 @@ namespace ServiceDesk.Models
                 using (var client = new HttpClient())
                 {
 
-                    client.BaseAddress = new Uri("https://localhost:44397/api/Values/Depts");
+                    client.BaseAddress = new Uri("http://teamewebapi.azurewebsites.net/api/Values/Depts");
                     client.DefaultRequestHeaders.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     var Res = client.GetAsync(client.BaseAddress);
@@ -180,7 +180,7 @@ namespace ServiceDesk.Models
                 using (var client = new HttpClient())
                 {
 
-                    client.BaseAddress = new Uri("https://localhost:44397/api/Values/Createdby");
+                    client.BaseAddress = new Uri("http://teamewebapi.azurewebsites.net/api/Values/Createdby");
                     client.DefaultRequestHeaders.Clear();
                     var s = client.BaseAddress + "/" + empid;
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -216,7 +216,7 @@ namespace ServiceDesk.Models
                 using (var client = new HttpClient())
                 {
 
-                    client.BaseAddress = new Uri("https://localhost:44397/api/Values/TicketsGroup");
+                    client.BaseAddress = new Uri("http://teamewebapi.azurewebsites.net/api/Values/TicketsGroup");
                     client.DefaultRequestHeaders.Clear();
                     var s = client.BaseAddress + "/" + groupid;
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -252,7 +252,7 @@ namespace ServiceDesk.Models
                 using (var client = new HttpClient())
                 {
 
-                    client.BaseAddress = new Uri("https://localhost:44397/api/Values/TicketsDept");
+                    client.BaseAddress = new Uri("http://teamewebapi.azurewebsites.net/api/Values/TicketsDept");
                     client.DefaultRequestHeaders.Clear();
                     var s = client.BaseAddress + "/" + deptid;
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -287,7 +287,7 @@ namespace ServiceDesk.Models
                 using (var client = new HttpClient())
                 {
 
-                    client.BaseAddress = new Uri("https://localhost:44397/api/Values/Assignedto");
+                    client.BaseAddress = new Uri("http://teamewebapi.azurewebsites.net/api/Values/Assignedto");
                     client.DefaultRequestHeaders.Clear();
                     var s = client.BaseAddress + "/" + username;
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -322,7 +322,7 @@ namespace ServiceDesk.Models
                 using (var client = new HttpClient())
                 {
 
-                    client.BaseAddress = new Uri("https://localhost:44397/api/Values/GroupMembers");
+                    client.BaseAddress = new Uri("http://teamewebapi.azurewebsites.net/api/Values/GroupMembers");
                     client.DefaultRequestHeaders.Clear();
                     var s = client.BaseAddress + "/" + groupid;
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -357,7 +357,7 @@ namespace ServiceDesk.Models
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:44397/api/Values/GroupsinDept");
+                    client.BaseAddress = new Uri("http://teamewebapi.azurewebsites.net/api/Values/GroupsinDept");
                     client.DefaultRequestHeaders.Clear();
                     var s = client.BaseAddress + "/" + dept_id;
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -393,7 +393,7 @@ namespace ServiceDesk.Models
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:44397/api/Values/ProfilesbyRole");
+                    client.BaseAddress = new Uri("http://teamewebapi.azurewebsites.net/api/Values/ProfilesbyRole");
                     client.DefaultRequestHeaders.Clear();
                     var s = client.BaseAddress + "/" + role;
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -429,7 +429,7 @@ namespace ServiceDesk.Models
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:44397/api/Values/Groupbygrpid");
+                    client.BaseAddress = new Uri("http://teamewebapi.azurewebsites.net/api/Values/Groupbygrpid");
                     client.DefaultRequestHeaders.Clear();
                     var s = client.BaseAddress + "/" + grp_id;
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -464,7 +464,7 @@ namespace ServiceDesk.Models
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:44397/api/Values/Deptbyid");
+                    client.BaseAddress = new Uri("http://teamewebapi.azurewebsites.net/api/Values/Deptbyid");
                     client.DefaultRequestHeaders.Clear();
                     var s = client.BaseAddress + "/" + grp_id;
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -516,13 +516,13 @@ namespace ServiceDesk.Models
         {
             try
             {
-                string apiUrl = "https://localhost:44397/api/Values/P_Ticket";
+                string apiUrl = "http://teamewebapi.azurewebsites.net/api/Values/P_Ticket";
                 string inputJson = (new JavaScriptSerializer()).Serialize(ticket);
                 WebClient client = new WebClient();
                 client.Headers["Content-type"] = "application/json";
                 client.Encoding = Encoding.UTF8;
                 string json = client.UploadString(apiUrl, inputJson);
-                if(json=="Added")
+                if(json.Contains("Added"))
                 {
                     return "Added";
                 }
@@ -543,13 +543,13 @@ namespace ServiceDesk.Models
             
             try
             {
-                string apiUrl = "https://localhost:44397/api/Values/P_Profile";
+                string apiUrl = "http://teamewebapi.azurewebsites.net/api/Values/P_Profile";
                 string inputJson = (new JavaScriptSerializer()).Serialize(Emp);
                 WebClient client = new WebClient();
                 client.Headers["Content-type"] = "application/json";
                 client.Encoding = Encoding.UTF8;
                 string json = client.UploadString(apiUrl, inputJson);
-                if (json == "Added")
+                if (json.Contains("Added"))
                 {
                     return "Added";
                 }
@@ -569,13 +569,13 @@ namespace ServiceDesk.Models
 
             try
             {
-                string apiUrl = "https://localhost:44397/api/Values/P_Dept";
+                string apiUrl = "http://teamewebapi.azurewebsites.net/api/Values/P_Dept";
                 string inputJson = (new JavaScriptSerializer()).Serialize(Dpt);
                 WebClient client = new WebClient();
                 client.Headers["Content-type"] = "application/json";
                 client.Encoding = Encoding.UTF8;
                 string json = client.UploadString(apiUrl, inputJson);
-                if (json == "Added")
+                if (json.Contains("Added"))
                 {
                     return "Added";
                 }
@@ -596,13 +596,13 @@ namespace ServiceDesk.Models
 
             try
             {
-                string apiUrl = "https://localhost:44397/api/Values/P_Grp";
+                string apiUrl = "http://teamewebapi.azurewebsites.net/api/Values/P_Grp";
                 string inputJson = (new JavaScriptSerializer()).Serialize(Grp);
                 WebClient client = new WebClient();
                 client.Headers["Content-type"] = "application/json";
                 client.Encoding = Encoding.UTF8;
                 string json = client.UploadString(apiUrl, inputJson);
-                if (json == "Added")
+                if (json.Contains("Added"))
                 {
                     return "Added";
                 }
@@ -621,13 +621,13 @@ namespace ServiceDesk.Models
         {
             try
             {
-                string apiUrl = "https://localhost:44397/api/Values/Up_Ticket";
+                string apiUrl = "http://teamewebapi.azurewebsites.net/api/Values/Up_Ticket";
                 string inputJson = (new JavaScriptSerializer()).Serialize(Tic);
                 WebClient client = new WebClient();
                 client.Headers["Content-type"] = "application/json";
                 client.Encoding = Encoding.UTF8;
                 string json = client.UploadString(apiUrl, inputJson);
-                if (json == "1 row updated")
+                if (json.Contains("1 row updated"))
                 {
                     return "1 row updated";
                 }
@@ -646,7 +646,7 @@ namespace ServiceDesk.Models
         {
             try
             {
-                string apiUrl = "https://localhost:44397/api/Values/Up_Profile";
+                string apiUrl = "http://teamewebapi.azurewebsites.net/api/Values/Up_Profile";
                 string inputJson = (new JavaScriptSerializer()).Serialize(Emp);
                 WebClient client = new WebClient();
                 client.Headers["Content-type"] = "application/json";
@@ -671,13 +671,13 @@ namespace ServiceDesk.Models
         {
             try
             {
-                string apiUrl = "https://localhost:44397/api/Values/UP_Group";
+                string apiUrl = "http://teamewebapi.azurewebsites.net/api/Values/UP_Group";
                 string inputJson = (new JavaScriptSerializer()).Serialize(Grp);
                 WebClient client = new WebClient();
                 client.Headers["Content-type"] = "application/json";
                 client.Encoding = Encoding.UTF8;
                 string json = client.UploadString(apiUrl, inputJson);
-                if (json == "1 row updated")
+                if (json.Contains("1 row updated"))
                 {
                     return "1 row updated";
                 }
@@ -698,13 +698,13 @@ namespace ServiceDesk.Models
         {
             try
             {
-                string apiUrl = "https://localhost:44397/api/Values/UP_Dept";
+                string apiUrl = "http://teamewebapi.azurewebsites.net/api/Values/UP_Dept";
                 string inputJson = (new JavaScriptSerializer()).Serialize(Dpt);
                 WebClient client = new WebClient();
                 client.Headers["Content-type"] = "application/json";
                 client.Encoding = Encoding.UTF8;
                 string json = client.UploadString(apiUrl, inputJson);
-                if (json == "1 row updated")
+                if (json.Contains("1 row updated"))
                 {
                     return "1 row updated";
                 }
@@ -752,7 +752,7 @@ namespace ServiceDesk.Models
 
             try
             {
-                string apiUrl = "https://localhost:44397/api/Values/Del_Ticket";
+                string apiUrl = "http://teamewebapi.azurewebsites.net/api/Values/Del_Ticket";
                 string s = ticketid.ToString();
                 //string api = apiUrl + "/" + s;
                 //string inputJson = (new JavaScriptSerializer()).Serialize(ticketid);
@@ -760,7 +760,7 @@ namespace ServiceDesk.Models
                 client.Headers["Content-type"] = "application/json";
                 client.Encoding = Encoding.UTF8;
                 string json = client.UploadString(apiUrl, s);
-                if (json == "Removed")
+                if (json.Contains("Removed"))
                 {
                     return "Removed";
                 }
@@ -779,7 +779,7 @@ namespace ServiceDesk.Models
 
             try
             {
-                string apiUrl = "https://localhost:44397/api/Values/Del_Profile";
+                string apiUrl = "http://teamewebapi.azurewebsites.net/api/Values/Del_Profile";
                 string s = emp_id.ToString();
                 //string api = apiUrl + "/" + s;
                 //string inputJson = (new JavaScriptSerializer()).Serialize(ticketid);
@@ -787,7 +787,7 @@ namespace ServiceDesk.Models
                 client.Headers["Content-type"] = "application/json";
                 client.Encoding = Encoding.UTF8;
                 string json = client.UploadString(apiUrl, s);
-                if (json == "Removed")
+                if (json.Contains("Removed"))
                 {
                     return "Removed";
                 }
@@ -807,7 +807,7 @@ namespace ServiceDesk.Models
 
             try
             {
-                string apiUrl = "https://localhost:44397/api/Values/Del_Dept";
+                string apiUrl = "http://teamewebapi.azurewebsites.net/api/Values/Del_Dept";
                 string s = deptid.ToString();
                 //string api = apiUrl + "/" + s;
                 //string inputJson = (new JavaScriptSerializer()).Serialize(ticketid);
@@ -815,7 +815,7 @@ namespace ServiceDesk.Models
                 client.Headers["Content-type"] = "application/json";
                 client.Encoding = Encoding.UTF8;
                 string json = client.UploadString(apiUrl, s);
-                if (json == "Removed")
+                if (json.Contains("Removed"))
                 {
                     return "Removed";
                 }
@@ -835,7 +835,7 @@ namespace ServiceDesk.Models
 
                         try
                         {
-                            string apiUrl = "https://localhost:44397/api/Values/Del_Grp";
+                            string apiUrl = "http://teamewebapi.azurewebsites.net/api/Values/Del_Grp";
                             string s = grp_id.ToString();
                             //string api = apiUrl + "/" + s;
                             //string inputJson = (new JavaScriptSerializer()).Serialize(ticketid);
@@ -843,7 +843,7 @@ namespace ServiceDesk.Models
                             client.Headers["Content-type"] = "application/json";
                             client.Encoding = Encoding.UTF8;
                             string json = client.UploadString(apiUrl, s);
-                            if (json == "Removed")
+                            if (json.Contains("Removed"))
                             {
                                 return "Removed";
                             }
