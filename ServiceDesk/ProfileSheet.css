@@ -1,5 +1,5 @@
 ﻿body {
-    background-image: url('Images/r2.jpg');
+    background-image: url('https://images.hdqwalls.com/download/abstract-mix-colors-wide-1920x1080.jpg');
     background-attachment: fixed;
     background-size: 100% 100%;
 }
@@ -9,8 +9,11 @@
     position: absolute;
     left: 62%;
     right: 5%;
-    top: 8%;
+    top: 10%;
     bottom: 0%;
+    background-color: aliceblue;
+    opacity: 95%;
+    border-radius: 10px;
 }
 
 .un {

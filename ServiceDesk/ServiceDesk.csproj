@@ -164,9 +164,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Tables.cs" />
-    <Compile Include="Models\DBO_Delete.cs" />
-    <Compile Include="Models\DBO_Get.cs" />
-    <Compile Include="Models\DBO_Post.cs" />
     <Compile Include="Models\WebAPIDBO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -176,6 +173,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Forallviews.css" />
     <Content Include="Form.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -183,6 +181,10 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="HomePage.html" />
+    <Content Include="Images\dep img.jpg" />
+    <Content Include="Images\dept small1.jpeg" />
+    <Content Include="Images\dept small2.jpeg" />
+    <Content Include="Images\dept small3.jpeg" />
     <Content Include="Images\r10.png" />
     <Content Include="Images\R11.jpg" />
     <Content Include="Images\R12.jpg" />
@@ -201,10 +203,13 @@
     <Content Include="LoginSheet.css" />
     <Content Include="Manager.html" />
     <Content Include="MasterSheet.css" />
+    <Content Include="New dept form.html" />
+    <Content Include="New grp form.html" />
     <Content Include="newTicket.html" />
     <Content Include="Profile.html" />
     <Content Include="ProfileSheet.css" />
-    <Content Include="Scripts\TicketLoad.js" />
+    <Content Include="style1.css" />
+    <Content Include="style2.css" />
     <Content Include="User.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

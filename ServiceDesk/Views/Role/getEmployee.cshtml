@@ -22,26 +22,26 @@
 <body>
     <div class="agileits-main">
         <div class="wrap">
-            <div class="a3">
+            @*<div class="a3">
                 <img src="~/Images/Win.png" width="150" height="100" />
-            </div>
+            </div>*@
             <div class="a">
                 <form name="myForm" method="post" action="@Url.Action("updateEmployee", "Role")">
                     <h1>Profile</h1>
                     <lable>Name</lable>
                     <input class="un" type="text" align="center" name="Name" id="Emp_Name" required/>
                     <lable>Emp ID</lable>
-                    <input class="form-control" type="text" align="center" name="ID" id="Emp_ID" readonly/>
+                    <input class="un" type="text" align="center" name="ID" id="Emp_ID" readonly/>
                     <lable>Email</lable>
                     <input class="un" type="text" align="center" name="Email" id="Emp_Email" required/>
                     <lable>Mobile</lable>
                     <input class="un" type="text" align="center" name="Mobile" id="Mobile_Num" required/>
                     <lable>Emp Role</lable>
-                    <input class="form-control" type="text" align="center" name="Role" id="Emp_Role" readonly/>
+                    <input class="un" type="text" align="center" name="Role" id="Emp_Role" readonly/>
                     <lable>Dept ID</lable>
-                    <input class="form-control" type="text" align="center" name="Dept" id="Dept_ID" readonly/>
+                    <input class="un" type="text" align="center" name="Dept" id="Dept_ID" readonly/>
                     <lable>Group ID</lable>
-                    <input class="form-control" type="text" align="center" name="Group" id="Group_ID" readonly/>
+                    <input class="un" type="text" align="center" name="Group" id="Group_ID" readonly/>
                     
                     <input class="submit" type="submit" value="Update">
                 </form>

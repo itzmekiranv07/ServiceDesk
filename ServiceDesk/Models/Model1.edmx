@@ -1,0 +1,465 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TeamEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Dept_ID" />
+          </Key>
+          <Property Name="Dept_ID" Type="int" Nullable="false" />
+          <Property Name="Dept_Name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Manager_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Emp_ID" />
+          </Key>
+          <Property Name="Emp_ID" Type="int" Nullable="false" />
+          <Property Name="Emp_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Emp_Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Emp_Pwd" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Emp_Role" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Mobile_Num" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Dept_ID" Type="int" />
+          <Property Name="Group_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="Group_ID" />
+          </Key>
+          <Property Name="Group_ID" Type="int" Nullable="false" />
+          <Property Name="Group_Name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Dept_ID" Type="int" />
+          <Property Name="Team_Lead_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Tickets_Info">
+          <Key>
+            <PropertyRef Name="Ticket_ID" />
+          </Key>
+          <Property Name="Ticket_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emp_ID" Type="int" Nullable="false" />
+          <Property Name="Dept_ID" Type="int" />
+          <Property Name="Group_ID" Type="int" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Status_Info" Type="varchar" MaxLength="20" />
+          <Property Name="Priority_Info" Type="varchar" MaxLength="20" />
+          <Property Name="Assigned_To" Type="int" />
+          <Property Name="Progress" Type="int" />
+          <Property Name="Messagess" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK__Employee__Dept_I__6C190EBB">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Dept_ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Dept_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__Group___6E01572D">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="Group_ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Group_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Groups__Dept_ID__6754599E">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Dept_ID" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="Dept_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Groups__Team_Lea__6D0D32F4">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Emp_ID" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="Team_Lead_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tickets_I__Assig__73BA3083">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Tickets_Info" Type="Self.Tickets_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Emp_ID" />
+            </Principal>
+            <Dependent Role="Tickets_Info">
+              <PropertyRef Name="Assigned_To" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tickets_I__Dept___71D1E811">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Tickets_Info" Type="Self.Tickets_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Dept_ID" />
+            </Principal>
+            <Dependent Role="Tickets_Info">
+              <PropertyRef Name="Dept_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tickets_I__Emp_I__70DDC3D8">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Tickets_Info" Type="Self.Tickets_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Emp_ID" />
+            </Principal>
+            <Dependent Role="Tickets_Info">
+              <PropertyRef Name="Emp_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tickets_I__Group__72C60C4A">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="0..1" />
+          <End Role="Tickets_Info" Type="Self.Tickets_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="Group_ID" />
+            </Principal>
+            <Dependent Role="Tickets_Info">
+              <PropertyRef Name="Group_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TeamEModelStoreContainer">
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tickets_Info" EntityType="Self.Tickets_Info" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Employee__Dept_I__6C190EBB" Association="Self.FK__Employee__Dept_I__6C190EBB">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__Group___6E01572D" Association="Self.FK__Employee__Group___6E01572D">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__Dept_ID__6754599E" Association="Self.FK__Groups__Dept_ID__6754599E">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__Team_Lea__6D0D32F4" Association="Self.FK__Groups__Team_Lea__6D0D32F4">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tickets_I__Assig__73BA3083" Association="Self.FK__Tickets_I__Assig__73BA3083">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Tickets_Info" EntitySet="Tickets_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tickets_I__Dept___71D1E811" Association="Self.FK__Tickets_I__Dept___71D1E811">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Tickets_Info" EntitySet="Tickets_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tickets_I__Emp_I__70DDC3D8" Association="Self.FK__Tickets_I__Emp_I__70DDC3D8">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Tickets_Info" EntitySet="Tickets_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tickets_I__Group__72C60C4A" Association="Self.FK__Tickets_I__Group__72C60C4A">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Tickets_Info" EntitySet="Tickets_Info" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TeamEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Dept_ID" />
+          </Key>
+          <Property Name="Dept_ID" Type="Int32" Nullable="false" />
+          <Property Name="Dept_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Manager_ID" Type="Int32" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__Dept_I__6C190EBB" FromRole="Department" ToRole="Employee" />
+          <NavigationProperty Name="Groups" Relationship="Self.FK__Groups__Dept_ID__6754599E" FromRole="Department" ToRole="Groups" />
+          <NavigationProperty Name="Tickets_Info" Relationship="Self.FK__Tickets_I__Dept___71D1E811" FromRole="Department" ToRole="Tickets_Info" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Emp_ID" />
+          </Key>
+          <Property Name="Emp_ID" Type="Int32" Nullable="false" />
+          <Property Name="Emp_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Emp_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Emp_Pwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Emp_Role" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mobile_Num" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dept_ID" Type="Int32" />
+          <Property Name="Group_ID" Type="Int32" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__Employee__Dept_I__6C190EBB" FromRole="Employee" ToRole="Department" />
+          <NavigationProperty Name="Group" Relationship="Self.FK__Employee__Group___6E01572D" FromRole="Employee" ToRole="Groups" />
+          <NavigationProperty Name="Groups" Relationship="Self.FK__Groups__Team_Lea__6D0D32F4" FromRole="Employee" ToRole="Groups" />
+          <NavigationProperty Name="Tickets_Info" Relationship="Self.FK__Tickets_I__Assig__73BA3083" FromRole="Employee" ToRole="Tickets_Info" />
+          <NavigationProperty Name="Tickets_Info1" Relationship="Self.FK__Tickets_I__Emp_I__70DDC3D8" FromRole="Employee" ToRole="Tickets_Info" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="Group_ID" />
+          </Key>
+          <Property Name="Group_ID" Type="Int32" Nullable="false" />
+          <Property Name="Group_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dept_ID" Type="Int32" />
+          <Property Name="Team_Lead_ID" Type="Int32" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__Groups__Dept_ID__6754599E" FromRole="Groups" ToRole="Department" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__Group___6E01572D" FromRole="Groups" ToRole="Employee" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Groups__Team_Lea__6D0D32F4" FromRole="Groups" ToRole="Employee" />
+          <NavigationProperty Name="Tickets_Info" Relationship="Self.FK__Tickets_I__Group__72C60C4A" FromRole="Groups" ToRole="Tickets_Info" />
+        </EntityType>
+        <EntityType Name="Tickets_Info">
+          <Key>
+            <PropertyRef Name="Ticket_ID" />
+          </Key>
+          <Property Name="Ticket_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emp_ID" Type="Int32" Nullable="false" />
+          <Property Name="Dept_ID" Type="Int32" />
+          <Property Name="Group_ID" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status_Info" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Priority_Info" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Assigned_To" Type="Int32" />
+          <Property Name="Progress" Type="Int32" />
+          <Property Name="Messagess" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__Tickets_I__Dept___71D1E811" FromRole="Tickets_Info" ToRole="Department" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Tickets_I__Assig__73BA3083" FromRole="Tickets_Info" ToRole="Employee" />
+          <NavigationProperty Name="Employee1" Relationship="Self.FK__Tickets_I__Emp_I__70DDC3D8" FromRole="Tickets_Info" ToRole="Employee" />
+          <NavigationProperty Name="Group" Relationship="Self.FK__Tickets_I__Group__72C60C4A" FromRole="Tickets_Info" ToRole="Groups" />
+        </EntityType>
+        <Association Name="FK__Employee__Dept_I__6C190EBB">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Dept_ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Dept_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Groups__Dept_ID__6754599E">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Groups" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Dept_ID" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="Dept_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tickets_I__Dept___71D1E811">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Tickets_Info" Type="Self.Tickets_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Dept_ID" />
+            </Principal>
+            <Dependent Role="Tickets_Info">
+              <PropertyRef Name="Dept_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__Group___6E01572D">
+          <End Role="Groups" Type="Self.Group" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="Group_ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Group_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Groups__Team_Lea__6D0D32F4">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Groups" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Emp_ID" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="Team_Lead_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tickets_I__Assig__73BA3083">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Tickets_Info" Type="Self.Tickets_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Emp_ID" />
+            </Principal>
+            <Dependent Role="Tickets_Info">
+              <PropertyRef Name="Assigned_To" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tickets_I__Emp_I__70DDC3D8">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Tickets_Info" Type="Self.Tickets_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Emp_ID" />
+            </Principal>
+            <Dependent Role="Tickets_Info">
+              <PropertyRef Name="Emp_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tickets_I__Group__72C60C4A">
+          <End Role="Groups" Type="Self.Group" Multiplicity="0..1" />
+          <End Role="Tickets_Info" Type="Self.Tickets_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="Group_ID" />
+            </Principal>
+            <Dependent Role="Tickets_Info">
+              <PropertyRef Name="Group_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TeamEEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Groups" EntityType="Self.Group" />
+          <EntitySet Name="Tickets_Info" EntityType="Self.Tickets_Info" />
+          <AssociationSet Name="FK__Employee__Dept_I__6C190EBB" Association="Self.FK__Employee__Dept_I__6C190EBB">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__Dept_ID__6754599E" Association="Self.FK__Groups__Dept_ID__6754599E">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tickets_I__Dept___71D1E811" Association="Self.FK__Tickets_I__Dept___71D1E811">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Tickets_Info" EntitySet="Tickets_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__Group___6E01572D" Association="Self.FK__Employee__Group___6E01572D">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__Team_Lea__6D0D32F4" Association="Self.FK__Groups__Team_Lea__6D0D32F4">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tickets_I__Assig__73BA3083" Association="Self.FK__Tickets_I__Assig__73BA3083">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Tickets_Info" EntitySet="Tickets_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tickets_I__Emp_I__70DDC3D8" Association="Self.FK__Tickets_I__Emp_I__70DDC3D8">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Tickets_Info" EntitySet="Tickets_Info" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tickets_I__Group__72C60C4A" Association="Self.FK__Tickets_I__Group__72C60C4A">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Tickets_Info" EntitySet="Tickets_Info" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TeamEModelStoreContainer" CdmEntityContainer="TeamEEntities">
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="TeamEModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="Dept_ID" ColumnName="Dept_ID" />
+                <ScalarProperty Name="Dept_Name" ColumnName="Dept_Name" />
+                <ScalarProperty Name="Manager_ID" ColumnName="Manager_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="TeamEModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Emp_ID" ColumnName="Emp_ID" />
+                <ScalarProperty Name="Emp_Name" ColumnName="Emp_Name" />
+                <ScalarProperty Name="Emp_Email" ColumnName="Emp_Email" />
+                <ScalarProperty Name="Emp_Pwd" ColumnName="Emp_Pwd" />
+                <ScalarProperty Name="Emp_Role" ColumnName="Emp_Role" />
+                <ScalarProperty Name="Mobile_Num" ColumnName="Mobile_Num" />
+                <ScalarProperty Name="Dept_ID" ColumnName="Dept_ID" />
+                <ScalarProperty Name="Group_ID" ColumnName="Group_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="TeamEModel.Group">
+              <MappingFragment StoreEntitySet="Groups">
+                <ScalarProperty Name="Group_ID" ColumnName="Group_ID" />
+                <ScalarProperty Name="Group_Name" ColumnName="Group_Name" />
+                <ScalarProperty Name="Dept_ID" ColumnName="Dept_ID" />
+                <ScalarProperty Name="Team_Lead_ID" ColumnName="Team_Lead_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tickets_Info">
+            <EntityTypeMapping TypeName="TeamEModel.Tickets_Info">
+              <MappingFragment StoreEntitySet="Tickets_Info">
+                <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+                <ScalarProperty Name="Emp_ID" ColumnName="Emp_ID" />
+                <ScalarProperty Name="Dept_ID" ColumnName="Dept_ID" />
+                <ScalarProperty Name="Group_ID" ColumnName="Group_ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Status_Info" ColumnName="Status_Info" />
+                <ScalarProperty Name="Priority_Info" ColumnName="Priority_Info" />
+                <ScalarProperty Name="Assigned_To" ColumnName="Assigned_To" />
+                <ScalarProperty Name="Progress" ColumnName="Progress" />
+                <ScalarProperty Name="Messagess" ColumnName="Messagess" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
