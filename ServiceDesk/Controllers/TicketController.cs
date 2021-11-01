@@ -20,20 +20,29 @@ namespace ServiceDesk.Controllers
         [Route("Ticket/getTicket/{ticketid}")]
         public ActionResult getTicket(int? ticketid)
         {
+            WebAPIDBO dbo = new WebAPIDBO();
+            ViewData["Emp"] = JsonConvert.SerializeObject((Emp)Session["Emp"]);
+            ViewData["Groups"] = "null";
+            ViewData["EmpsinGroup"] = "null";
+
             if (ticketid == null)
             {
                 Employee e = (Employee)Session["Employee"];
-                ticketid = -1;
                 Ticket_Info newticket = new Ticket_Info();
-                newticket.Ticket_ID = -1; newticket.Progress = 0;newticket.Priority_Info = "Low";newticket.Messagess = "";
+                newticket.Ticket_ID = -1; newticket.Progress = 0; newticket.Priority_Info = "Low";newticket.Messagess = "";
                 newticket.Group_ID = null; newticket.Dept_ID = null; newticket.Emp_ID = e.Emp_ID;newticket.Title = "";
                 newticket.Status_Info = ""; newticket.Assigned_To = null;
                 ViewData["Tickets"] = JsonConvert.SerializeObject(newticket);
+                ViewData["TicketNames"] = JsonConvert.SerializeObject(dbo.getTicket_Names(-1,null,null,null));
+                ViewData["Depts"] = JsonConvert.SerializeObject(dbo.getDepts());
+
             }
             else
             {
-                WebAPIDBO dbo = new WebAPIDBO();
-                ViewData["Tickets"] = JsonConvert.SerializeObject(dbo.getTicket((int)ticketid));
+                Ticket_Info t = dbo.getTicket((int)ticketid);
+                Ticket_Names tn = dbo.getTicket_Names(t.Ticket_ID, t.Group_ID, t.Dept_ID, t.Assigned_To);
+                ViewData["Tickets"] = JsonConvert.SerializeObject(t);
+                ViewData["TicketNames"] = JsonConvert.SerializeObject(dbo.getTicket_Names(t.Ticket_ID, t.Group_ID,t.Dept_ID,t.Assigned_To));
             }
             
             return View();

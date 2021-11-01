@@ -14,14 +14,16 @@
 <link href="~/GetTicket.css" rel="stylesheet" />
 
 <script>
-    var session = @Html.Raw(ViewData["UserNow"]);
+    var session = @Html.Raw(ViewData["Emp"]);
     var ticket = @Html.Raw(ViewData["Tickets"]);
     var ticketnames = @Html.Raw(ViewData["TicketNames"]);
     var depts = @Html.Raw(ViewData["Depts"]);
     $(document).ready(function () {
+
+        alert("here");
         //created by - View for all : C,A,L,M
         //Title
-        if (true) {//check if its not new ticket
+        if (ticket["Ticket_ID"] != -1) {//check if its not new ticket
             $('#title').val(ticket["Title"]);
             $('#title').prop('readonly', true);
         }
@@ -34,7 +36,8 @@
             document.getElementById('assignedlink').setAttribute('href', '/Role/getEmployee/' + ticket["Assigned_To"]);
         }else $('#assignedlink').remove();
         //Dept - select dept View to admin and creator else not visible
-        if (ticket["Ticket_ID"] == 1) { // should by null or -1 to signify new ticket
+        if (ticket["Ticket_ID"] == -1) { // should by null or -1 to signify new ticket
+            //alert("here");
             $.each(depts, function (index, element) {
                 $('#seldept').append(
                     '<option value="' + element.Dept_ID + '">' + element.Dept_Name + '</option>'
@@ -46,7 +49,7 @@
             );
         }
         //Group - select for manager, view to creator and admin, hide for everyone else
-        if (true) {
+        if (false) {
             var groups = @Html.Raw(ViewData["Groups"]);
             $.each(groups, function (index, element) {
                 $('#selgrp').append(
@@ -55,8 +58,8 @@
             });
         } else {}
         // Employee - select for lead view for others
-        if (true) {
-            var emps = @Html.Raw(ViewData["Emps"]);
+        if (false) {
+            var emps = @Html.Raw(ViewData["EmpsinGroup"]);
             $.each(emps, function (index, element) {
                 $('#selemp').append(
                     '<option value="' + element.Emp_ID + '">' + element.Emp_Name + '</option>'
