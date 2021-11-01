@@ -75,10 +75,6 @@ namespace ServiceDesk.Models
         public string Dept_Name { get; set; }
         public string Emp_Name { get; set; }
 
-
-
-
-
     }
 
     public class Group
