@@ -48,7 +48,7 @@ namespace ServiceDesk.Controllers
             if (Emp_ID == null)
             {
                 Employee e = (Employee)Session["Employee"];
-                Emp_ID = e.Emp_ID;
+                Emp_ID = 123; //need to update later
             }
 
             WebAPIDBO dbo = new WebAPIDBO();
