@@ -243,6 +243,8 @@
     <Content Include="Views\Shared\_MasterPage.cshtml" />
     <Content Include="Views\Role\getDepts.cshtml" />
     <Content Include="Views\Role\updateEmployee.cshtml" />
+    <Content Include="Views\Role\getunassignedGroup.cshtml" />
+    <Content Include="Views\Role\getunassignedDept.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

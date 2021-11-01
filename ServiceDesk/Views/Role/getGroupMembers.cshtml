@@ -6,6 +6,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
+
+            document.getElementById('unassigned').setAttribute('href', '/Role/unassignedgrp/' + @ViewBag.groupid);
+
             var members = @Html.Raw(ViewData["GroupMembers"]);
             $.each(members, function (index, element) {
                 $('#content').append(
@@ -44,6 +47,7 @@
     <div class="a1">
         <h2> GroupMembers </h2>
         <div class="a2" id="content">
+            <a class="btn btn-secondary" id="unassigned">View Unassigned to anybody</a>
         </div>
     </div>
 </body>

@@ -13,6 +13,8 @@
     <script>
         $(document).ready(function () {
 
+            document.getElementById('unassigned').setAttribute('href', '/Role/unassigneddept/' + @Html.Raw(ViewBag.deptid));
+
             var groups = @Html.Raw(ViewData["GroupsinDept"]);
 
             $.each(groups, function (index, element) {
@@ -35,7 +37,7 @@
 <body>
 
     <div id="content">
-
+        <a class="btn btn-secondary" id="unassigned">View Unassigned to any Group</a>
     </div>
 
 </body>

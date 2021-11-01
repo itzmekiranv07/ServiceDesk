@@ -464,7 +464,7 @@ namespace ServiceDesk.Models
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("http://teamewebapi.azurewebsites.net/api/Values/Deptbyid");
+                    client.BaseAddress = new Uri("http://teamewebapi.azurewebsites.net/api/Values/Deptbygrpid");
                     client.DefaultRequestHeaders.Clear();
                     var s = client.BaseAddress + "/" + grp_id;
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -536,7 +536,7 @@ namespace ServiceDesk.Models
                 return E.ToString();
             }
             
-        }
+          }
 
         internal string newEmployee(Employee Emp)
         {
@@ -901,7 +901,7 @@ namespace ServiceDesk.Models
             if (deptid == null) deptname = "Unassigned";
             else deptname = GetDeptbygrpid((int)deptid).Dept_Name; 
             if (assign == null) assigned = "Unassigned";
-            else assigned = getProfile((int)grpid).Emp_Name;  
+            else assigned = getProfile((int)assign).Emp_Name;  
             Ticket_Names t = new Ticket_Names(ticketid,groupname,deptname,assigned);
             return t;
         }
