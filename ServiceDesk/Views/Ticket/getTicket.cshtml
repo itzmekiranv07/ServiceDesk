@@ -1,5 +1,5 @@
 @{
-    ViewBag.Title = "getTicket";
+    ViewBag.Title = "Ticket";
     Layout = "~/Views/Shared/_MasterPage.cshtml";
 
 }
@@ -15,14 +15,16 @@
 <link href="~/Getticket.css" rel="stylesheet" />
 
 <script>
-    var session = @Html.Raw(ViewData["UserNow"]);
+    var session = @Html.Raw(ViewData["Emp"]);
     var ticket = @Html.Raw(ViewData["Tickets"]);
     var ticketnames = @Html.Raw(ViewData["TicketNames"]);
     var depts = @Html.Raw(ViewData["Depts"]);
     $(document).ready(function () {
+
+        alert("here");
         //created by - View for all : C,A,L,M
         //Title
-        if (true) {//check if its not new ticket
+        if (ticket["Ticket_ID"] != -1) {//check if its not new ticket
             $('#title').val(ticket["Title"]);
             $('#title').prop('readonly', true);
         }
@@ -35,52 +37,105 @@
             document.getElementById('assignedlink').setAttribute('href', '/Role/getEmployee/' + ticket["Assigned_To"]);
         }else $('#assignedlink').remove();
         //Dept - select dept View to admin and creator else not visible
-        if (ticket["Ticket_ID"] == 1) { // should by null or -1 to signify new ticket
+        if (ticket["Ticket_ID"] == -1 || session["Emp_Role"] == "Admin") { // should by null or -1 to signify new ticket
+            //alert("here");
             $.each(depts, function (index, element) {
                 $('#seldept').append(
                     '<option value="' + element.Dept_ID + '">' + element.Dept_Name + '</option>'
                 );
             });
-        }else if (false) {// check for creator or admin and hide for lead and assigned to
+
+        }else if (true) {// check for creator or admin and hide for lead and assigned to
             $('#seldept').append(
                 '<option value="' + ticket.Dept_ID + '">' + ticketnames.Dept_Name + '</option>'
             );
         }
         //Group - select for manager, view to creator and admin, hide for everyone else
-        if (true) {
+        if (session["Emp_Role"] == "Manager") {
             var groups = @Html.Raw(ViewData["Groups"]);
             $.each(groups, function (index, element) {
                 $('#selgrp').append(
                     '<option value="' + element.Group_ID + '">' + element.Group_Name + '</option>'
                 );
             });
-        } else {}
+        } else {
+            $('#selgrp').append(
+                '<option value="' + ticket["Group_ID"] + '">' + ticketnames["Group_Name"] + '</option>'
+            );
+        }
         // Employee - select for lead view for others
-        if (true) {
-            var emps = @Html.Raw(ViewData["Emps"]);
+        if (session["Emp_Role"] == "Lead") {
+            var emps = @Html.Raw(ViewData["EmpsinGroup"]);
             $.each(emps, function (index, element) {
                 $('#selemp').append(
                     '<option value="' + element.Emp_ID + '">' + element.Emp_Name + '</option>'
                 );
             });
-        } else { }
+        } else
+        {
+            $('#selemp').append(
+                '<option value="' + ticket["Assigned_To"] + '">' + ticketnames["Assigned_To_Name"] + '</option>'
+            );
+        }
         // Priority - select for manager view for else
-        if (true) {
+        if (session["Emp_Role"] == "Manager") {
             var prios = ["Low", "Medium", "High"];
             $.each(prios, function (index, element) {
                 $('#priority').append(
                     '<option value="' + element + '">' + element + '</option>'
                 );
             });
+        } else {
+            $('#priority').append(
+                '<option value="' + ticket["Priority_Info"] + '">' + ticket["Priority_Info"] + '</option>'
+            );
         }
         //Messages
         //$('#messagebody').text = ticket["Messagess"];
         document.getElementById("submessage").onclick = function () { myFunction() };
         function myFunction() {
             var message = $('#messagesbox').val();
-            ticket["Messagess"] += (session["Emp_Name"] + ": " + message);
+            ticket["Messagess"] += "//////////" +(session["Emp_Name"] + ": " + message);
             document.getElementById('messagebody').value = ticket["Messagess"];
+
+           
             ticket["Title"] = $('#title').val();
+            ticket["Priority_Info"] = $('#priority').val();
+            ticket["Dept_ID"] = $('#seldept').val();
+            ticket["Group_ID"] = $('#selgrp').val();
+            ticket["Assigned_To"] = $('#selemp').val();
+
+            $.ajax({
+
+                type: "post",
+
+                url: "/Ticket/putTicket",
+
+                data: JSON.stringify(ticket),
+
+                dataType: "json",
+
+                contentType: "application/json; charset=utf-8",
+
+                async: false,
+
+                success: function (data) {
+
+                    var s = "Successful Entry";
+
+                    alert(data);
+
+                },
+
+                error: function (x, err) {
+
+                    alert(x.readyState);
+
+                    alert(x.responseText);
+
+                }
+
+            });
         }
     });
 </script>

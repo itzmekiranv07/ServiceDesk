@@ -11,9 +11,12 @@ namespace ServiceDesk.Controllers
     public class RoleController : Controller
     {
         //asdasdasdasasdasdasd
+
+        static WebAPIDBO dbo = new WebAPIDBO();
+        //static Employee e = (Employee)Session["Employee"];
         public ActionResult StartRoute()
         {
-            WebAPIDBO dbo = new WebAPIDBO();
+            //WebAPIDBO dbo = new WebAPIDBO();
             Employee e = (Employee)Session["Employee"];
 
             if (e.Emp_Role == "User") return RedirectToAction("Users", "Role");
@@ -25,7 +28,7 @@ namespace ServiceDesk.Controllers
 
         public ActionResult Users()
         {
-            return RedirectToAction("getAssignedTickets", "Role");
+            return RedirectToAction("getAssignedTickets", "Ticket");
         }
 
         public ActionResult Lead()
@@ -51,7 +54,7 @@ namespace ServiceDesk.Controllers
                 Emp_ID = e.Emp_ID; 
             }
 
-            WebAPIDBO dbo = new WebAPIDBO();
+            //WebAPIDBO dbo = new WebAPIDBO();
             ViewData["Profile"] = JsonConvert.SerializeObject(dbo.getProfile((int)Emp_ID));
             return View();
         }
@@ -62,7 +65,7 @@ namespace ServiceDesk.Controllers
         {
             
            
-                Employee e = (Employee)Session["Employee"];
+            Employee e = (Employee)Session["Employee"];
             Employee E1 = new Employee();
             E1.Emp_ID = e.Emp_ID;
             E1.Emp_Name = Name;
@@ -75,7 +78,7 @@ namespace ServiceDesk.Controllers
             
             
 
-            WebAPIDBO dbo = new WebAPIDBO();
+            //WebAPIDBO dbo = new WebAPIDBO();
             string s = dbo.PutProfile(E1);
             if(s== "1 row updated")
             {
@@ -101,7 +104,8 @@ namespace ServiceDesk.Controllers
                 Employee e = (Employee)Session["Employee"];
                 Group_ID = e.Group_ID;
             }
-            WebAPIDBO dbo = new WebAPIDBO();
+            //WebAPIDBO dbo = new WebAPIDBO();
+            ViewBag.groupid = Group_ID;
             ViewData["GroupMembers"] = JsonConvert.SerializeObject(dbo.getGroupMembers((int)Group_ID));
             return View();
         }
@@ -110,9 +114,40 @@ namespace ServiceDesk.Controllers
         [Route("Role/getGroupsinDept/{Dept_ID}")]
         public ActionResult getGroupsinDept(int? Dept_ID)// landing for manager
         {
-            if (Dept_ID == null) Dept_ID = 0;//Dept_ID = dept of logged in manager
-            WebAPIDBO dbo = new WebAPIDBO();
+            if (Dept_ID == null){
+                Employee e = (Employee)Session["Employee"];
+                Dept_ID = e.Dept_ID;//Dept_ID = dept of logged in manager
+                           
+            }
+            //WebAPIDBO dbo = new WebAPIDBO();
+            ViewBag.deptid = Dept_ID;
             ViewData["GroupsinDept"] = JsonConvert.SerializeObject(dbo.GetGroupsinDept((int)Dept_ID));
+            return View();
+        }
+
+        [Route("Role/unassignedgrp/{id}")]
+        public ActionResult getunassignedGroup(int id)
+        {
+            //WebAPIDBO dbo = new WebAPIDBO
+            List<Ticket_Info> unassigned = new List<Ticket_Info> { };
+            foreach(Ticket_Info ticket in dbo.getTicketsGroup(id))
+            {
+                if (ticket.Assigned_To == null) unassigned.Add(ticket);
+            }
+            ViewData["UnassignedGroup"] = JsonConvert.SerializeObject(unassigned);
+            return View();
+        }
+
+        [Route("Role/unassigneddept/{id}")]
+        public ActionResult getunassignedDept(int id)
+        {
+            //WebAPIDBO dbo = new WebAPIDBO
+            List<Ticket_Info> unassigned = new List<Ticket_Info> { };
+            foreach (Ticket_Info ticket in dbo.getTicketsDept(id))
+            {
+                if (ticket.Group_ID == null) unassigned.Add(ticket);
+            }
+            ViewData["UnassignedDept"] = JsonConvert.SerializeObject(unassigned);
             return View();
         }
 
