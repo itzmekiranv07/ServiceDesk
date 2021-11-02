@@ -8,8 +8,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
-
+            var group = @Html.Raw(ViewData["Group"]);
             var tickets = @Html.Raw(ViewData["UnassignedGroup"]);
+
+            $('#heading').text("New tickets in " + group["Group_Name"]);
+
             $.each(tickets, function (index, element) {
                 $('#content').append(
                         '<div  class="card" style="width: 18rem;"><div class="card-body"><h5 class="card-title">'
@@ -57,7 +60,7 @@
 
 <body>
     <div class="a1">
-        <h2>Tickets</h2>
+        <h2 id="heading"></h2>
         <div class="a2" id="content">
 
         </div>

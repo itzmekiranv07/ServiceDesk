@@ -7,14 +7,16 @@
     <script>
         $(document).ready(function () {
 
+            var group = @Html.Raw(ViewData["Group"]);
+            $('#heading').text("Members in " + group["Group_Name"] );
             document.getElementById('unassigned').setAttribute('href', '/Role/unassignedgrp/' + @ViewBag.groupid);
 
             var members = @Html.Raw(ViewData["GroupMembers"]);
             $.each(members, function (index, element) {
                 $('#content').append(
-                        '<div class="card" style="width: 18rem;"><div class="card-body"><h5 class="card-title">'
-                        + element.Emp_ID + '</h5><h6 class="card-subtitle mb-2 text-muted">'
-                    + element.Emp_Name + '</h6><p class="card-text">' + element.Emp_Email + '</p><a href="/Ticket/getAssignedTickets/' + element.Emp_ID + '" ' + 'class="btn btn-primary">View Assigned Tickets</a></div></div>'
+                    '<div class="card" style="width: 18rem;"><div class="card-body"><a href ="/Role/getEmployee/' + element.Emp_ID +'"><h5 class="card-title">'
+                    + element.Emp_Name + '</h5></a><h6 class="card-subtitle mb-2 text-muted">'
+                    + element.Emp_Role + '</h6><p class="card-text">' + element.Emp_Email + '</p><a href="/Ticket/getAssignedTickets/' + element.Emp_ID + '" ' + 'class="btn btn-primary">View Assigned Tickets</a></div></div>'
                 );
             });
         });
@@ -47,9 +49,9 @@
 </head>
 <body>
     <div class="a1">
-        <h2> GroupMembers </h2>
+        <h2 id="heading"></h2>
         <div class="a2" id="content">
-            <a class="btn btn-secondary" id="unassigned">View Unassigned to anybody</a>
+            <a class="btn btn-secondary" id="unassigned">View Unassigned To Anybody</a>
         </div>
     </div>
 </body>
