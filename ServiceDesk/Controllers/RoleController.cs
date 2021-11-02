@@ -152,11 +152,16 @@ namespace ServiceDesk.Controllers
         public ActionResult getunassignedDept(int id)
         {
             //WebAPIDBO dbo = new WebAPIDBO
+            List<Ticket_Info> alltickets = dbo.getTicketsDept(id);
             List<Ticket_Info> unassigned = new List<Ticket_Info> { };
-            foreach (Ticket_Info ticket in dbo.getTicketsDept(id))
+            if (alltickets != null)
             {
-                if (ticket.Group_ID == null) unassigned.Add(ticket);
+                foreach (Ticket_Info ticket in alltickets)
+                {
+                    if (ticket.Group_ID == null) unassigned.Add(ticket);
+                }
             }
+            
             ViewData["Dept"] = JsonConvert.SerializeObject(dbo.GetDeptbygrpid(id));
             ViewData["UnassignedDept"] = JsonConvert.SerializeObject(unassigned);
             return View();
