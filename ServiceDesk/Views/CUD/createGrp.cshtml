@@ -3,21 +3,29 @@
     ViewBag.Title = "createGrp";
     Layout = "~/Views/Shared/_MasterPage.cshtml";
 }
-<link href="~/Forallviews.css" rel="stylesheet" />
+
 
 <h2>createGrp</h2>
 
 <body>
     <form method="post">
-        <div>
+        <div style="position:absolute;top:10%;left:5%;">
             <label>Group id</label>
             <input type="number" value="Groupid" name="Grp_ID" id="Group_ID" required />
+            <br />
+            <br />
             <label>Group Name</label>
-            <input type="text" value="Groupname" name="Grp_Name" id="Group_Name"  required/>
+            <input type="text" value="Groupname" name="Grp_Name" id="Group_Name" required />
+            <br />
+            <br />
             <label>Deptid</label>
-            <input type="number" value="Deptid" name="deptid" id="Dept_ID" required/>
+            <input type="number" value="Deptid" name="deptid" id="Dept_ID" required />
+            <br />
+            <br />
             <label>Leadid</label>
-            <input type="number" value="Leadid" name="teamleadid" id="Team_Lead_ID"  />
+            <input type="number" value="Leadid" name="teamleadid" id="Team_Lead_ID" />
+            <br />
+            <br />
             <input type="submit" value="Create" />
 
         </div>

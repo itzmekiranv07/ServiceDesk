@@ -4,19 +4,25 @@
     ViewBag.Title = "createDept";
     Layout = "~/Views/Shared/_MasterPage.cshtml";
 }
-<link href="~/Forallviews.css" rel="stylesheet" />
+@*<link href="~/Forallviews.css" rel="stylesheet" />*@
 
 <h2>createDept</h2>
 
 <body>
     <form method="post">
-        <div>
+        <div style="position:absolute;top:10%;left:5%;">
             <label>Deptid</label>
-            <input type="number" value="Deptid" name="Dept_ID" id="Dept_ID" required/>
+            <input type="number" value="Deptid" name="Dept_ID" id="Dept_ID" required />
+            <br />
+            <br />
             <label>Deptname</label>
-            <input type="text" value="Deptname" name="Dept_Name" id="Dept_Name" required/>
+            <input type="text" value="Deptname" name="Dept_Name" id="Dept_Name" required />
+            <br />
+            <br />
             <label>Managerid</label>
             <input type="number" value="Mgrid" name="Managerid" id="Manager_ID" />
+            <br />
+            <br />
             <input type="submit" value="Create" />
 
         </div>

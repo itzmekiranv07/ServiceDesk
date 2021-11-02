@@ -2,29 +2,45 @@
     ViewBag.Title = "createEmp";
     Layout = "~/Views/Shared/_MasterPage.cshtml";
 }
-<link href="~/Forallviews.css" rel="stylesheet" />
+
 <h2>createEmp</h2>
 
 <body>
-    <div class="a">
+    <div style="position:absolute;top:10%;left:5%;">
         <form method="post">
             <h1>Profile</h1>
             <lable>Name</lable>
             <input class="un" type="text" align="center" name="empname" id="Emp_Name" required />
+            <br />
+            <br />
             <lable>Emp ID</lable>
-            <input class="un" type="text" align="center" name="empid" id="Emp_ID" required/>
+            <input class="un" type="text" align="center" name="empid" id="Emp_ID" required />
+            <br />
+            <br />
             <lable>Email</lable>
             <input class="un" type="text" align="center" name="email" id="Emp_Email" required />
+            <br />
+            <br />
             <label>Password</label>
             <input class="un" type="text" align="center" name="password" id="Emp_Pwd" required />
+            <br />
+            <br />
             <lable>Mobile</lable>
             <input class="un" type="text" align="center" name="mobile" id="Mobile_Num" required />
+            <br />
+            <br />
             <lable>Emp Role</lable>
             <input class="un" type="text" align="center" name="role" id="Emp_Role" required />
+            <br />
+            <br />
             <lable>Dept ID</lable>
             <input class="un" type="text" align="center" name="deptid" id="Dept_ID" />
+            <br />
+            <br />
             <lable>Group ID</lable>
             <input class="un" type="text" align="center" name="grpid" id="Group_ID" />
+            <br />
+            <br />
 
             <input class="submit" type="submit" value="Create">
         </form>
