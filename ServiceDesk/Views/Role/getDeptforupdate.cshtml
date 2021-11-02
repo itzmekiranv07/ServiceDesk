@@ -16,22 +16,30 @@
         });
     });
 </script>
+<style>
 
+</style>
 <body>
     <form method="post" action="@Url.Action("updateDept", "CUD")">
-        <div>
+        <div style="position:absolute;top:10%;left:5%;">
             <label>Deptid</label>
             <input type="number" value="Deptid" name="Dept_ID" id="Dept_ID" />
+            <br />
+            <br />
             <label>Deptname</label>
             <input type="text" value="Deptname" name="Dept_Name" id="Dept_Name" />
+            <br />
+            <br />
             <label>Managerid</label>
             <input type="number" value="Mgrid" name="Managerid" id="Manager_ID" />
+            <br />
+            <br />
             <input type="submit" value="Update" />
 
         </div>
         <div>
 
-            <h1>@ViewBag.msg</h1>;
+            <h1>@ViewBag.msg</h1>
             
 
         </div>
