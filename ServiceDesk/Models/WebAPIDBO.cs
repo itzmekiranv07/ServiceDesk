@@ -749,17 +749,17 @@ namespace ServiceDesk.Models
         //Delete
         internal string Del_Ticket(int ticketid)
         {
-
+            /*
             try
             {
                 string apiUrl = "http://teamewebapi.azurewebsites.net/api/Values/Del_Ticket";
                 string s = ticketid.ToString();
-                //string api = apiUrl + "/" + s;
+                string api = apiUrl + "/" + s;
                 //string inputJson = (new JavaScriptSerializer()).Serialize(ticketid);
                 WebClient client = new WebClient();
                 client.Headers["Content-type"] = "application/json";
                 client.Encoding = Encoding.UTF8;
-                string json = client.UploadString(apiUrl, s);
+                string json = client.UploadString(api,s);
                 if (json.Contains("Removed"))
                 {
                     return "Removed";
@@ -767,6 +767,22 @@ namespace ServiceDesk.Models
                 else
                 {
                     return "Not Record Found";
+                }
+            }*/
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("http://teamewebapi.azurewebsites.net/api/Values/Del_Ticket/");
+
+                    //HTTP DELETE
+                    var deleteTask = client.DeleteAsync(ticketid.ToString());
+                    deleteTask.Wait();
+
+                    var result = deleteTask.Result;
+
+                    return result.ToString();
+
                 }
             }
             catch (Exception E)

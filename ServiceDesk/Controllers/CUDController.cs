@@ -42,9 +42,9 @@ namespace ServiceDesk.Controllers
         public ActionResult delTic(int Tic_ID)
         {
             WebAPIDBO dbo = new WebAPIDBO();
-            string s = dbo.Del_Profile(Tic_ID);
+            string s = dbo.Del_Ticket(Tic_ID);
             ViewBag.msg = s;
-            return View();
+            return Redirect(Request.UrlReferrer.ToString());
         }
 
         //Update
