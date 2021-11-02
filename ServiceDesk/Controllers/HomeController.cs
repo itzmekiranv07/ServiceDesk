@@ -33,19 +33,17 @@ namespace ServiceDesk.Controllers
 
             Employee E=new Employee();
             E = dbo.getProfile(empid);
-            bool check = true;
-
-
-            if (check == true)
+            if(E.Emp_ID==empid && E.Emp_Pwd == pass_word)
             {
                 Session["Employee"] = dbo.getProfile(empid);
 
-                Session["Emp"] = new Emp(E.Emp_ID,E.Emp_Name,E.Emp_Role);
+
 
                 return RedirectToAction("StartRoute", "Role");
             }
             else
             {
+                ViewBag.msg = "Enter Valid Details";
                 return View();
             }
 

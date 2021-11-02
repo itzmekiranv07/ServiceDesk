@@ -160,3 +160,10 @@ h6 {
     top: 80%;
     bottom: 10%;
 }
+.error{
+    position:absolute;
+    left:65%;
+    color:red;
+    top:62%;
+    text-align:center;
+}

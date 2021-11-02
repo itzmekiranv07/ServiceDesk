@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ServiceDesk.Models;
 using Newtonsoft.Json;
+using System.Web.Security;
 
 namespace ServiceDesk.Controllers
 {
@@ -158,6 +159,21 @@ namespace ServiceDesk.Controllers
             ViewData["Depts"] = JsonConvert.SerializeObject(dbo.getDepts());
             return View();
         }
+
+
+        [Route("Role/Logout")]
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+
+        //Admin controls
+
+
+
+
+        //
 
     }
 }
