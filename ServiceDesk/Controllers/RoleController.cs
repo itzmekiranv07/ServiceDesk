@@ -132,11 +132,16 @@ namespace ServiceDesk.Controllers
         public ActionResult getunassignedGroup(int id)
         {
             //WebAPIDBO dbo = new WebAPIDBO
+            List<Ticket_Info> alltickets = dbo.getTicketsGroup(id);
             List<Ticket_Info> unassigned = new List<Ticket_Info> { };
-            foreach(Ticket_Info ticket in dbo.getTicketsGroup(id))
+            if(alltickets != null) 
             {
-                if (ticket.Assigned_To == null) unassigned.Add(ticket);
+                foreach (Ticket_Info ticket in alltickets)
+                {
+                    if (ticket.Assigned_To == null) unassigned.Add(ticket);
+                }
             }
+            
             ViewData["UnassignedGroup"] = JsonConvert.SerializeObject(unassigned);
             return View();
         }
@@ -157,11 +162,27 @@ namespace ServiceDesk.Controllers
         [Route("Role/getDepts")]
         public ActionResult getDepts() // landing for admin
         {
-            WebAPIDBO dbo = new WebAPIDBO();
+            //WebAPIDBO dbo = new WebAPIDBO();
             ViewData["Depts"] = JsonConvert.SerializeObject(dbo.getDepts());
             return View();
         }
 
+        [Route("Role/getDeptforupdate")]
+        [Route("Role/getDeptforupdate/{deptid}")]
+        public ActionResult getDeptforupdate(int? deptid)
+        {
+            ViewData["Dept"] = JsonConvert.SerializeObject(dbo.GetDeptbygrpid((int)deptid));
+            return View();
+        }
+
+
+        [Route("Role/getGroupforupdate")]
+        [Route("Role/getGroupforupdate/{grpid}")]
+        public ActionResult getGroupforupdate(int? grpid)
+        {
+            ViewData["Group"] = JsonConvert.SerializeObject(dbo.GetDeptbygrpid((int)grpid));
+            return View();
+        }
 
         [Route("Role/Logout")]
         public ActionResult Logout()

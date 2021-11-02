@@ -22,7 +22,7 @@ namespace ServiceDesk.Controllers
         {
             WebAPIDBO dbo = new WebAPIDBO();
             Employee e = (Employee)Session["Employee"];
-            ViewData["Emp"] = JsonConvert.SerializeObject((Emp)Session["Emp"]);
+            ViewData["Emp"] = JsonConvert.SerializeObject((Employee)Session["Employee"]);
             ViewData["Groups"] = "null";
             ViewData["EmpsinGroup"] = "null";
             ViewData["Depts"] = "null";

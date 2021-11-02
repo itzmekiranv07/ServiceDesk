@@ -22,8 +22,6 @@
     $(document).ready(function () {
 
         alert("here");
-        //created by - View for all : C,A,L,M
-        //Title
         if (ticket["Ticket_ID"] != -1) {//check if its not new ticket
             $('#title').val(ticket["Title"]);
             $('#title').prop('readonly', true);
@@ -51,7 +49,7 @@
             );
         }
         //Group - select for manager, view to creator and admin, hide for everyone else
-        if (session["Emp_Role"] == "Manager") {
+        if ((session["Emp_Role"] == "Manager" && session["Dept_ID"] == ticket["Dept_ID"]) && ticket["Ticket_ID"] != -1) {
             var groups = @Html.Raw(ViewData["Groups"]);
             $.each(groups, function (index, element) {
                 $('#selgrp').append(
@@ -64,7 +62,7 @@
             );
         }
         // Employee - select for lead view for others
-        if (session["Emp_Role"] == "Lead") {
+        if ((session["Emp_Role"] == "Lead" && session["Group_ID"] == ticket["Group_ID"] ) && ticket["Ticket_ID"] != -1) {
             var emps = @Html.Raw(ViewData["EmpsinGroup"]);
             $.each(emps, function (index, element) {
                 $('#selemp').append(
@@ -78,7 +76,7 @@
             );
         }
         // Priority - select for manager view for else
-        if (session["Emp_Role"] == "Manager") {
+        if ((session["Emp_Role"] == "Manager" && session["Dept_ID"] == ticket["Dept_ID"]) && ticket["Ticket_ID"] != -1) {
             var prios = ["Low", "Medium", "High"];
             $.each(prios, function (index, element) {
                 $('#priority').append(
