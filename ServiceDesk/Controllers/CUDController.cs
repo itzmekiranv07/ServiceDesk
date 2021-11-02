@@ -99,6 +99,13 @@ namespace ServiceDesk.Controllers
 
         //create emp
         [Route("CUD/createEmp")]
+        [HttpGet]
+        public ActionResult createEmp()
+        {
+            return View();
+        }
+        [Route("CUD/createEmp")]
+        [HttpPost]
         public ActionResult createEmp(int empid,string empname,string email,string password,string role,string mobile,int deptid,int grpid)
         {
             Employee E = new Employee();
@@ -112,42 +119,40 @@ namespace ServiceDesk.Controllers
             E.Group_ID = grpid;
             WebAPIDBO dbo = new WebAPIDBO();
             string s = dbo.newEmployee(E);
-            if(s.Contains("Added"))
-            {
-                return View();
-            }
-            else
-            {
-                ViewBag.msg = s;
-                return View();
-            }
+            ViewBag.msg = s;
+            return View();
         }
 
         //create Dept
         [Route("CUD/createDept")]
-
-        public ActionResult createDept(int Dept_ID, string Dept_Name, int Managerid)
+        [HttpGet]
+        public ActionResult createDept()
+        {
+            return View();
+        }
+        [Route("CUD/createDept")]
+        [HttpPost]
+        public ActionResult createDept(int Dept_ID, string Dept_Name, int? Managerid)
         {
             Dept D = new Dept();
             D.Dept_ID = Dept_ID;
             D.Dept_Name = Dept_Name;
             D.Manager_ID = Managerid;
             WebAPIDBO dbo = new WebAPIDBO();
-            string s = dbo.PutDept(D);
-            if (s.Contains("Added"))
-            {
-                return View();
-            }
-            else
-            {
-                ViewBag.msg = s;
-                return View();
-            }
+            string s = dbo.newDept(D);
+            ViewBag.msg = s;
+            return View();
         }
 
         //create grp
         [Route("CUD/createGrp")]
-
+        [HttpGet]
+        public ActionResult createGrp()
+        {
+            return View();
+        }
+        [Route("CUD/createGrp")]
+        [HttpPost]
         public ActionResult createGrp(int Grp_ID, string Grp_Name, int deptid, int teamleadid)
         {
             Group G = new Group();
@@ -156,16 +161,9 @@ namespace ServiceDesk.Controllers
             G.Dept_ID = deptid;
             G.Team_Lead_ID = teamleadid;
             WebAPIDBO dbo = new WebAPIDBO();
-            string s = dbo.PutGroup(G);
-            if (s.Contains("Added"))
-            {
-                return View();
-            }
-            else
-            {
-                ViewBag.msg = s;
-                return View();
-            }
+            string s = dbo.newGroup(G);
+            ViewBag.msg = s;
+            return View();
         }
 
     }

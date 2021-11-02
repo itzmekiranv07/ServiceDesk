@@ -253,10 +253,12 @@
     <Content Include="Views\Role\getunassignedDept.cshtml" />
     <Content Include="Views\Role\getDeptforupdate.cshtml" />
     <Content Include="Views\Role\getGroupforupdate.cshtml" />
+    <Content Include="Views\CUD\createDept.cshtml" />
+    <Content Include="Views\CUD\createEmp.cshtml" />
+    <Content Include="Views\CUD\createGrp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\CUD\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
