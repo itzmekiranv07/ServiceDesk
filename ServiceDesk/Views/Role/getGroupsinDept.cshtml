@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_MasterPage.cshtml";
 }
 
-<h2>Groups in Dept</h2>
+<h2>Groups in  </h2>
 
 <link href="~/Forallviews.css" rel="stylesheet" />
 <head>
@@ -14,18 +14,31 @@
         $(document).ready(function () {
 
             document.getElementById('unassigned').setAttribute('href', '/Role/unassigneddept/' + @Html.Raw(ViewBag.deptid));
+            var emp =  @Html.Raw(ViewData["Emp"]);
 
             var groups = @Html.Raw(ViewData["GroupsinDept"]);
 
             $.each(groups, function (index, element) {
                 $('#content').append(
 
-                        '<div class="card" style="width: 18rem;"><div class="card-body"><h5 class="card-title">'
+                    '<div class="card" style="width: 18rem;"><div class="card-body" id="grpcard' + element.Group_ID + '" ><h5 class="card-title">'
                     + element.Group_ID + '</h5><h6 class="card-subtitle mb-2 text-muted">'
                     + element.Group_Name + '</h6><p class="card-text">' + element.Dept_ID + '</p><a href="/Role/getGroupMembers/' + element.Group_ID + '" ' + 'class="btn btn-primary">View Group Members</a></div></div>'
 
                 );
+                if (emp["Emp_Role"] == "Admin") {
+                    //alert
+                    var cardid = '#grpcard' + element.Group_ID;
+                    $(cardid).append(
+                        '<a href="/Role/getGroupMembers/'
+                        + element.Group_ID + '" ' + 'class="btn btn-primary" > Edit Group</a>'
+                    );
+                }
+
             });
+            
+            
+            //if()
         });
     </script>
 

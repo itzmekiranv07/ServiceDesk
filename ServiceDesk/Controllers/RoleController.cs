@@ -121,7 +121,9 @@ namespace ServiceDesk.Controllers
                            
             }
             //WebAPIDBO dbo = new WebAPIDBO();
+            ViewBag.Dept_Name = dbo.GetDeptbygrpid((int)Dept_ID).Dept_Name;
             ViewBag.deptid = Dept_ID;
+            ViewData["Emp"] = JsonConvert.SerializeObject((Emp)Session["Emp"]);
             ViewData["GroupsinDept"] = JsonConvert.SerializeObject(dbo.GetGroupsinDept((int)Dept_ID));
             return View();
         }

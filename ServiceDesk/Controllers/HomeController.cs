@@ -35,10 +35,9 @@ namespace ServiceDesk.Controllers
             E = dbo.getProfile(empid);
             if(E.Emp_ID==empid && E.Emp_Pwd == pass_word)
             {
+                Employee e = dbo.getProfile(empid);
                 Session["Employee"] = dbo.getProfile(empid);
-
-
-
+                Session["Emp"] = new Emp(e.Emp_ID,e.Emp_Name,e.Emp_Role);
                 return RedirectToAction("StartRoute", "Role");
             }
             else

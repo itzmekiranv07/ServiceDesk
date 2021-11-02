@@ -13,17 +13,20 @@
     <script>
         $(document).ready(function () {
 
-            var groups = @Html.Raw(ViewData["Depts"]);
+            var depts = @Html.Raw(ViewData["Depts"]);
 
-            $.each(groups, function (index, element) {
+            $.each(depts, function (index, element) {
                 $('#content').append(
 
                         '<div class="card" style="width: 18rem;"><div class="card-body"><h5 class="card-title">'
                     + element.Dept_ID + '</h5><h6 class="card-subtitle mb-2 text-muted">'
-                    + element.Dept_Name + '</h6><p class="card-text">' + element.Manager_ID + '</p><a href="/Role/getGroupsinDept/' + element.Dept_ID + '" ' + 'class="btn btn-primary">View Groups</a></div></div>'
+                    + element.Dept_Name + '</h6><p class="card-text">' + element.Manager_ID + '</p><a href="/Role/getGroupsinDept/' + element.Dept_ID + '" ' + 'class="btn btn-primary">View Groups</a><a href="/Role/getGroupMembers/'
+                    + element.Dept_ID + '" ' + 'class="btn btn-primary" >Edit Department</a></div></div>'
 
                 );
             });
+
+
         });
     </script>
 
@@ -37,8 +40,9 @@
     <div class="a1">
         <h2> Departments </h2>
         <div class="a2" id="content">
-            <a class="btn btn-secondary" id="unassigned">View Unassigned to any Group</a>
+
         </div>
+        <a id="newdept" class="btn btn-primary">Create new department</a>
     </div>
 </body>
 
