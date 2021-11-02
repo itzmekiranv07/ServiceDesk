@@ -12,18 +12,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
-
+            
             document.getElementById('unassigned').setAttribute('href', '/Role/unassigneddept/' + @Html.Raw(ViewBag.deptid));
-            var emp =  @Html.Raw(ViewData["Emp"]);
+            var dept = @Html.Raw(ViewData["Dept"]);
+
+            var emp = @Html.Raw(ViewData["Emps"]);
 
             var groups = @Html.Raw(ViewData["GroupsinDept"]);
+
+            $('#heading').text("Groups in " + dept["Dept_Name"]);
 
             $.each(groups, function (index, element) {
                 $('#content').append(
 
                     '<div class="card" style="width: 18rem;"><div class="card-body" id="grpcard' + element.Group_ID + '" ><h5 class="card-title">'
-                    + element.Group_ID + '</h5><h6 class="card-subtitle mb-2 text-muted">'
-                    + element.Group_Name + '</h6><p class="card-text">' + element.Dept_ID + '</p><a href="/Role/getGroupMembers/' + element.Group_ID + '" ' + 'class="btn btn-primary">View Group Members</a></div></div>'
+                    + element.Group_Name + '</h5><h6 class="card-subtitle mb-2 text-muted">'
+                    + dept["Dept_Name"] + '</h6><a href="/Role/getGroupMembers/' + element.Group_ID + '" ' + 'class="btn btn-primary">View Group Members</a></div></div>'
 
                 );
                 if (emp["Emp_Role"] == "Admin") {
@@ -36,8 +40,8 @@
                 }
 
             });
-            
-            
+
+
             //if()
         });
     </script>
@@ -49,7 +53,7 @@
 
 <body>
     <div class="a1">
-        <h2> Groups </h2>
+        <h2 id="heading"></h2>
         <div class="a2" id="content">
           <a class="btn btn-secondary" id="unassigned">View Unassigned to any Group</a>
         </div>

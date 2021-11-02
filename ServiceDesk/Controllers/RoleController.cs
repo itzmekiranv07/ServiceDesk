@@ -107,6 +107,7 @@ namespace ServiceDesk.Controllers
             }
             //WebAPIDBO dbo = new WebAPIDBO();
             ViewBag.groupid = Group_ID;
+            ViewData["Group"] = JsonConvert.SerializeObject(dbo.GetGroupbygrpid((int)Group_ID));
             ViewData["GroupMembers"] = JsonConvert.SerializeObject(dbo.getGroupMembers((int)Group_ID));
             return View();
         }
@@ -123,7 +124,8 @@ namespace ServiceDesk.Controllers
             //WebAPIDBO dbo = new WebAPIDBO();
             ViewBag.Dept_Name = dbo.GetDeptbygrpid((int)Dept_ID).Dept_Name;
             ViewBag.deptid = Dept_ID;
-            ViewData["Emp"] = JsonConvert.SerializeObject((Emp)Session["Emp"]);
+            ViewData["Dept"] = JsonConvert.SerializeObject(dbo.GetDeptbygrpid((int)Dept_ID));
+            ViewData["Emps"] = JsonConvert.SerializeObject((Emp)Session["Emp"]);
             ViewData["GroupsinDept"] = JsonConvert.SerializeObject(dbo.GetGroupsinDept((int)Dept_ID));
             return View();
         }
@@ -141,7 +143,7 @@ namespace ServiceDesk.Controllers
                     if (ticket.Assigned_To == null) unassigned.Add(ticket);
                 }
             }
-            
+            ViewData["Group"] = JsonConvert.SerializeObject(dbo.GetGroupbygrpid(id));
             ViewData["UnassignedGroup"] = JsonConvert.SerializeObject(unassigned);
             return View();
         }
@@ -155,6 +157,7 @@ namespace ServiceDesk.Controllers
             {
                 if (ticket.Group_ID == null) unassigned.Add(ticket);
             }
+            ViewData["Dept"] = JsonConvert.SerializeObject(dbo.GetDeptbygrpid(id));
             ViewData["UnassignedDept"] = JsonConvert.SerializeObject(unassigned);
             return View();
         }
