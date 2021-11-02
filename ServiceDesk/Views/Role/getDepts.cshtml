@@ -3,10 +3,10 @@
     ViewBag.Title = "getDepts";
     Layout = "~/Views/Shared/_MasterPage.cshtml";
 }
-
+<link href="~/Forallviews.css" rel="stylesheet" />
 
 <h2>Departments</h2>
-<link href="~/Forallviews.css" rel="stylesheet" />
+
 <head>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -45,8 +45,9 @@
         <div class="a2" id="content">
 
         </div>
-        <a id="newdept" class="btn btn-primary">Create new department</a>
-        <a id="newemp" class="btn btn-primary">Add a Employee</a>
+        <a id="newdept" href="/CUD/createDept" class="btn btn-primary">Create new Department</a>
+        <a id="newdept" href="/CUD/createGrp" class="btn btn-primary">Create new Group</a>
+        <a id="newemp" href="/CUD/createEmp" class="btn btn-primary">Add a Employee</a>
     </div>
 </body>
 

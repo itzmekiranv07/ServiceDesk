@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "createEmp";
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
+}
+<link href="~/Forallviews.css" rel="stylesheet" />
+<h2>createEmp</h2>
+
+<body>
+    <div class="a">
+        <form method="post">
+            <h1>Profile</h1>
+            <lable>Name</lable>
+            <input class="un" type="text" align="center" name="empname" id="Emp_Name" required />
+            <lable>Emp ID</lable>
+            <input class="un" type="text" align="center" name="empid" id="Emp_ID" required/>
+            <lable>Email</lable>
+            <input class="un" type="text" align="center" name="email" id="Emp_Email" required />
+            <label>Password</label>
+            <input class="un" type="text" align="center" name="password" id="Emp_Pwd" required />
+            <lable>Mobile</lable>
+            <input class="un" type="text" align="center" name="mobile" id="Mobile_Num" required />
+            <lable>Emp Role</lable>
+            <input class="un" type="text" align="center" name="role" id="Emp_Role" required />
+            <lable>Dept ID</lable>
+            <input class="un" type="text" align="center" name="deptid" id="Dept_ID" />
+            <lable>Group ID</lable>
+            <input class="un" type="text" align="center" name="grpid" id="Group_ID" />
+
+            <input class="submit" type="submit" value="Create">
+        </form>
+    </div>
+    <div>
+
+        <h1>@ViewBag.msg</h1>;
+
+
+    </div>
+</body>
