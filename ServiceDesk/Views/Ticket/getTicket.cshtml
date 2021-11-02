@@ -21,7 +21,7 @@
     var depts = @Html.Raw(ViewData["Depts"]);
     $(document).ready(function () {
 
-        alert("here");
+        /*alert("here");*/
         if (ticket["Ticket_ID"] != -1) {//check if its not new ticket
             $('#title').val(ticket["Title"]);
             $('#title').prop('readonly', true);
@@ -121,15 +121,15 @@
 
                     var s = "Successful Entry";
 
-                    alert(data);
+                    /*alert(data);*/
 
                 },
 
                 error: function (x, err) {
 
-                    alert(x.readyState);
+                    //alert(x.readyState);
 
-                    alert(x.responseText);
+                    //alert(x.responseText);
 
                 }
 
