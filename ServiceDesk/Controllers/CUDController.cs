@@ -63,12 +63,12 @@ namespace ServiceDesk.Controllers
             {
                 int deptid = D.Dept_ID;
                 ViewData["Dept"] = JsonConvert.SerializeObject(dbo.GetDeptbygrpid(deptid));
-                return View();
+                return RedirectToAction("getDeptforupdate", "Role", new { @deptid = D.Dept_ID });
             }
             else
             {
                 ViewBag.msg = "Not updated";
-                return View();
+                return RedirectToAction("getDeptforupdate", "Role");
             }
         }
 
@@ -85,14 +85,14 @@ namespace ServiceDesk.Controllers
             string s = dbo.PutGroup(G);
             if (s.Contains("1 row updated"))
             {
-                
+                int grpid = G.Group_ID;
                 ViewData["Group"] = JsonConvert.SerializeObject(dbo.GetGroupbygrpid(G.Group_ID));
-                return View();
+                return RedirectToAction("getGroupforupdate", "Role", new { @grpid = G.Group_ID });
             }
             else
             {
                 ViewBag.msg = "Not updated";
-                return View();
+                return RedirectToAction("getGroupforupdate", "Role");
             }
         }
 

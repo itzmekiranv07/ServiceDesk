@@ -5,4 +5,37 @@
 }
 
 <h2>getDeptforupdate</h2>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var Deptdata = @Html.Raw(ViewData["Dept"]);
+
+        var keys = Object.keys(Deptdata);
+        $.each(keys, function (index, element) {
+            $("#" + element).val(Deptdata[element]);
+        });
+    });
+</script>
+
+<body>
+    <form method="post" action="@Url.Action("updateDept", "CUD")">
+        <div>
+            <label>Deptid</label>
+            <input type="number" value="Deptid" name="Dept_ID" id="Dept_ID" />
+            <label>Deptname</label>
+            <input type="text" value="Deptname" name="Dept_Name" id="Dept_Name" />
+            <label>Managerid</label>
+            <input type="number" value="Mgrid" name="Managerid" id="Manager_ID" />
+            <input type="submit" value="Update" />
+
+        </div>
+        <div>
+
+            <h1>@ViewBag.msg</h1>;
+            
+
+        </div>
+
+    </form>
+</body>
 

@@ -6,3 +6,38 @@
 <h2>getGroupforupdate</h2>
 
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var Grp = @Html.Raw(ViewData["Group"]);
+
+        var keys = Object.keys(Grp);
+        $.each(keys, function (index, element) {
+            $("#" + element).val(Grp[element]);
+        });
+    });
+</script>
+
+<body>
+    <form method="post" action="@Url.Action("updateGrp", "CUD")">
+        <div>
+            <label>Group id</label>
+            <input type="number" value="Groupid" name="Grp_ID" id="Group_ID" />
+            <label>Group Name</label>
+            <input type="text" value="Groupname" name="Grp_Name" id="Group_Name" />
+            <label>Deptid</label>
+            <input type="number" value="Deptid" name="deptid" id="Dept_ID" />
+            <label>Leadid</label>
+            <input type="number" value="Leadid" name="teamleadid" id="Team_Lead_ID" />
+            <input type="submit" value="Update" />
+
+        </div>
+        <div>
+
+            <h1>@ViewBag.msg</h1>;
+            
+
+        </div>
+
+    </form>
+</body>

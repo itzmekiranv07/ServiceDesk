@@ -171,8 +171,17 @@ namespace ServiceDesk.Controllers
         [Route("Role/getDeptforupdate/{deptid}")]
         public ActionResult getDeptforupdate(int? deptid)
         {
-            ViewData["Dept"] = JsonConvert.SerializeObject(dbo.GetDeptbygrpid((int)deptid));
-            return View();
+            if(deptid==null)
+            {
+                ViewBag.msg = "The Department not updated , the values may be already assigned to others.";
+                return View();
+            }
+            else
+            {
+                ViewData["Dept"] = JsonConvert.SerializeObject(dbo.GetDeptbygrpid((int)deptid));
+                return View();
+            }
+           
         }
 
 
@@ -180,16 +189,20 @@ namespace ServiceDesk.Controllers
         [Route("Role/getGroupforupdate/{grpid}")]
         public ActionResult getGroupforupdate(int? grpid)
         {
-            ViewData["Group"] = JsonConvert.SerializeObject(dbo.GetDeptbygrpid((int)grpid));
-            return View();
+            if (grpid == null)
+            {
+                ViewBag.msg = "The Group not updated , the values may be already assigned to others.";
+                            return View();
+            }
+            else
+            {
+                ViewData["Group"] = JsonConvert.SerializeObject(dbo.GetGroupbygrpid((int)grpid));
+                return View();
+            }
         }
 
-        [Route("Role/Logout")]
-        public ActionResult Logout()
-        {
-            FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home");
-        }
+        
+
 
         //Admin controls
 
