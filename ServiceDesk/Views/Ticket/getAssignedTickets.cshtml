@@ -12,7 +12,7 @@
                 $('#content').append(           
                         '<div  class="card" style="width: 18rem;"><div class="card-body"><h5 class="card-title">'
                         + element.Title + '</h5><h6 class="card-subtitle mb-2 text-muted">'
-                    + element.Priority_Info + '</h6><p class="card-text">' + element.Progress + '</p><a href="/Ticket/getTicket/'
+                    + 'Priority: ' + element.Priority_Info + '<br/><br/><a href="/Ticket/getTicket/'
                     + element.Ticket_ID + '" ' + 'class="btn btn-secondary">View Ticket</a><a id = "delticket" href="/CUD/delTic/' + element.Ticket_ID + '" ' + 'class="btn btn-secondary">Delete Ticket</a></div></div>'
                 );
             });
