@@ -9,6 +9,7 @@ using System.Web.Security;
 
 namespace ServiceDesk.Controllers
 {
+    [Authorize]
     public class RoleController : Controller
     {
         //asdasdasdasasdasdasd
@@ -167,6 +168,7 @@ namespace ServiceDesk.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [Route("Role/getDepts")]
         public ActionResult getDepts() // landing for admin
         {
