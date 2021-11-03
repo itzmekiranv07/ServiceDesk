@@ -74,13 +74,13 @@ namespace ServiceDesk.Controllers
 
         [Route("CUD/updateGrp")]
 
-        public ActionResult updateGrp(int Grp_ID, string Grp_Name, int deptid,int teamleadid)
+        public ActionResult updateGrp(int Grp_ID, string Grp_Name, int deptid,int? teamleadid)
         {
             Group G = new Group();
             G.Group_ID = Grp_ID;
             G.Group_Name = Grp_Name;
             G.Dept_ID = deptid;
-            G.Team_Lead_ID = teamleadid;
+            G.Team_Lead_ID = (int)teamleadid;
             WebAPIDBO dbo = new WebAPIDBO();
             string s = dbo.PutGroup(G);
             if (s.Contains("1 row updated"))
@@ -106,7 +106,7 @@ namespace ServiceDesk.Controllers
         }
         [Route("CUD/createEmp")]
         [HttpPost]
-        public ActionResult createEmp(int empid,string empname,string email,string password,string role,string mobile,int deptid,int grpid)
+        public ActionResult createEmp(int empid,string empname,string email,string password,string role,string mobile,int? deptid,int? grpid)
         {
             Employee E = new Employee();
             E.Emp_ID = empid;
@@ -153,12 +153,12 @@ namespace ServiceDesk.Controllers
         }
         [Route("CUD/createGrp")]
         [HttpPost]
-        public ActionResult createGrp(int Grp_ID, string Grp_Name, int deptid, int teamleadid)
+        public ActionResult createGrp(int Grp_ID, string Grp_Name,int? deptid, int? teamleadid)
         {
             Group G = new Group();
             G.Group_ID = Grp_ID;
             G.Group_Name = Grp_Name;
-            G.Dept_ID = deptid;
+            G.Dept_ID = (int)deptid;
             G.Team_Lead_ID = teamleadid;
             WebAPIDBO dbo = new WebAPIDBO();
             string s = dbo.newGroup(G);
