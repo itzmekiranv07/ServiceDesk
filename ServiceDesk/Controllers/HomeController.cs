@@ -33,7 +33,7 @@ namespace ServiceDesk.Controllers
 
             Employee E=new Employee();
             E = dbo.getProfile(empid);
-            if(E.Emp_ID==empid && E.Emp_Pwd == pass_word)
+            if(E!=null && E.Emp_ID==empid && E.Emp_Pwd == pass_word)
             {
                 Employee e = dbo.getProfile(empid);
                 Session["Employee"] = dbo.getProfile(empid);
